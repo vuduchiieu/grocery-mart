@@ -6,6 +6,7 @@ import * as yup from "yup";
 import classNames from "classnames/bind";
 import styles from "./formLogin.module.scss";
 import { useState } from "react";
+import icon from "~/assets/icon";
 
 const cx = classNames.bind(styles);
 
@@ -73,64 +74,77 @@ function FormSignUp() {
         navigate("/signin");
     };
     return (
-        <form onSubmit={handleSubmit(onSubmit)}>
-            <div className={cx("wrap-form")}>
-                <input {...register("email")} placeholder="Email" />
-                {errors.email && (
-                    <p className={cx("error-message")}>
-                        {errors.email.message}
-                    </p>
-                )}
-                <input
-                    {...register("password")}
-                    placeholder="Password"
-                    type={showPassword ? "text" : "password"}
-                />
-                {errors.password && (
-                    <p className={cx("error-message")}>
-                        {errors.password.message}
-                    </p>
-                )}
-                <label className={cx("password")}>
-                    {showPassword === true ? (
-                        <img src="https://static.xx.fbcdn.net/rsrc.php/v3/yk/r/swFqSxKYa5M.png" />
-                    ) : (
-                        <img src="https://static.xx.fbcdn.net/rsrc.php/v3/yZ/r/je5FEJkU1_K.png" />
+        <>
+            <form onSubmit={handleSubmit(onSubmit)}>
+                <div className={cx("wrap-form")}>
+                    <input {...register("email")} placeholder="Email" />
+                    {errors.email && (
+                        <p className={cx("error-message")}>
+                            {errors.email.message}
+                        </p>
                     )}
                     <input
-                        type="checkbox"
-                        checked={showPassword}
-                        onChange={toggleShowPassword}
+                        {...register("password")}
+                        placeholder="Password"
+                        type={showPassword ? "text" : "password"}
                     />
-                </label>
+                    {errors.password && (
+                        <p className={cx("error-message")}>
+                            {errors.password.message}
+                        </p>
+                    )}
+                    <label className={cx("password")}>
+                        {showPassword === true ? (
+                            <img src="https://static.xx.fbcdn.net/rsrc.php/v3/yk/r/swFqSxKYa5M.png" />
+                        ) : (
+                            <img src="https://static.xx.fbcdn.net/rsrc.php/v3/yZ/r/je5FEJkU1_K.png" />
+                        )}
+                        <input
+                            type="checkbox"
+                            checked={showPassword}
+                            onChange={toggleShowPassword}
+                        />
+                    </label>
 
-                <input
-                    {...register("confirmPassword", {
-                        required: "This field is required",
-                    })}
-                    placeholder="Confirm Password"
-                    type={showConfirmPassword ? "text" : "password"}
-                />
-                {errors.confirmPassword && (
-                    <p className={cx("error-message")}>
-                        {errors.confirmPassword.message}
-                    </p>
-                )}
-                <label className={cx("confirm-password")}>
-                    {showConfirmPassword === true ? (
-                        <img src="https://static.xx.fbcdn.net/rsrc.php/v3/yk/r/swFqSxKYa5M.png" />
-                    ) : (
-                        <img src="https://static.xx.fbcdn.net/rsrc.php/v3/yZ/r/je5FEJkU1_K.png" />
-                    )}
                     <input
-                        type="checkbox"
-                        checked={showConfirmPassword}
-                        onChange={toggleShowConfirmPassword}
+                        {...register("confirmPassword", {
+                            required: "This field is required",
+                        })}
+                        placeholder="Confirm Password"
+                        type={showConfirmPassword ? "text" : "password"}
                     />
-                </label>
-            </div>
-            <button className={cx("button")}>Sign Up</button>
-        </form>
+                    {errors.confirmPassword && (
+                        <p className={cx("error-message")}>
+                            {errors.confirmPassword.message}
+                        </p>
+                    )}
+                    <label className={cx("confirm-password")}>
+                        {showConfirmPassword === true ? (
+                            <img src="https://static.xx.fbcdn.net/rsrc.php/v3/yk/r/swFqSxKYa5M.png" />
+                        ) : (
+                            <img src="https://static.xx.fbcdn.net/rsrc.php/v3/yZ/r/je5FEJkU1_K.png" />
+                        )}
+                        <input
+                            type="checkbox"
+                            checked={showConfirmPassword}
+                            onChange={toggleShowConfirmPassword}
+                        />
+                    </label>
+                    <div className={cx("recovery")}>
+                        <label>
+                            <input type="checkbox" value="Bike" />
+                            Set as default card
+                        </label>
+                        <button>Recovery Password</button>
+                    </div>
+                </div>
+                <button className={cx("button")}>Sign Up</button>
+            </form>
+            <button className={cx("loginWithGG")}>
+                <img src={icon.google} alt="" />
+                <p>Sign in with Gmail</p>
+            </button>
+        </>
     );
 }
 

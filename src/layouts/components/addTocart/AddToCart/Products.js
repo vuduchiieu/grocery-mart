@@ -7,7 +7,7 @@ import { useAppContext } from "~/components/Context/AppContext";
 const cx = classNames.bind(styles);
 
 function Products() {
-    const { removeCartItem, updateCartItem } = useAppContext();
+    const { removeCartItem, updateCartItem, listHeart } = useAppContext();
 
     const uniqueProducts = Array.from(
         new Set(products.map((item) => item.productName))
@@ -66,7 +66,6 @@ function Products() {
                             <div className={cx("heart-delete")}>
                                 <div className={cx("heart")}>
                                     <img src={item.reaction} />
-
                                     <p>Save</p>
                                 </div>
                                 <div className={cx("delete")}>

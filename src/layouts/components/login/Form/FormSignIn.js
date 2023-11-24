@@ -4,6 +4,7 @@ import styles from "./formLogin.module.scss";
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AppContext } from "~/components/Context/AppContext";
+import icon from "~/assets/icon";
 
 const cx = classNames.bind(styles);
 
@@ -46,37 +47,50 @@ function FormSignIn() {
     const onSubmit = (data) => {};
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)}>
-            <div className={cx("wrap-form")}>
-                <input
-                    type="text"
-                    placeholder="Email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                />
-                <input
-                    type={showPassword ? "text" : "password"}
-                    placeholder="Password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                />
-                <label className={cx("password")}>
-                    {showPassword === true ? (
-                        <img src="https://static.xx.fbcdn.net/rsrc.php/v3/yk/r/swFqSxKYa5M.png" />
-                    ) : (
-                        <img src="https://static.xx.fbcdn.net/rsrc.php/v3/yZ/r/je5FEJkU1_K.png" />
-                    )}
+        <>
+            <form onSubmit={handleSubmit(onSubmit)}>
+                <div className={cx("wrap-form")}>
                     <input
-                        type="checkbox"
-                        checked={showPassword}
-                        onChange={toggleShowPassword}
+                        type="text"
+                        placeholder="Email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
                     />
-                </label>
-                <button className={cx("button")} onClick={handleLogin}>
-                    Login
-                </button>
-            </div>
-        </form>
+                    <input
+                        type={showPassword ? "text" : "password"}
+                        placeholder="Password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
+                    <label className={cx("password")}>
+                        {showPassword === true ? (
+                            <img src="https://static.xx.fbcdn.net/rsrc.php/v3/yk/r/swFqSxKYa5M.png" />
+                        ) : (
+                            <img src="https://static.xx.fbcdn.net/rsrc.php/v3/yZ/r/je5FEJkU1_K.png" />
+                        )}
+                        <input
+                            type="checkbox"
+                            checked={showPassword}
+                            onChange={toggleShowPassword}
+                        />
+                    </label>
+                    <div className={cx("recovery")}>
+                        <label>
+                            <input type="checkbox" value="Bike" />
+                            Set as default card
+                        </label>
+                        <button>Recovery Password</button>
+                    </div>
+                    <button className={cx("button")} onClick={handleLogin}>
+                        Login
+                    </button>
+                </div>
+            </form>
+            <button className={cx("loginWithGG")}>
+                <img src={icon.google} alt="" />
+                <p>Sign in with Gmail</p>
+            </button>
+        </>
     );
 }
 

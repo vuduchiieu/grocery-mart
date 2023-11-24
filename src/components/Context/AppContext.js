@@ -7,7 +7,11 @@ export const AppContext = createContext();
 export const Contexts = ({ children }) => {
     //reaction
     const [lavAzzaItems, setLavAzzaItems] = useState(TotalLavAzza);
-    const [listHeart, setListHeart] = useState([]);
+    const [listHeart, setListHeart] = useState(
+        JSON.parse(localStorage.getItem("likedItems")) || []
+    );
+
+    // statusHeart
     const handleReactionClick = (i) => {
         if (login === true) {
             const updatedLavAzzaItems = [...lavAzzaItems];
@@ -19,6 +23,7 @@ export const Contexts = ({ children }) => {
             const likedItems = updatedLavAzzaItems.filter(
                 (item) => item.reaction === icon.heartActive
             );
+            localStorage.setItem("likedItems", JSON.stringify(likedItems));
             setListHeart(likedItems);
         } else {
             window.location.href = "/signin";

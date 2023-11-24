@@ -60,6 +60,7 @@ const icon = {
     edit: require("./Edit.svg").default,
     tick: require("./Tick.svg").default,
     tickActive: require("./TickActive.svg").default,
+    google: require("./google.svg").default,
 };
 
 export default icon;
