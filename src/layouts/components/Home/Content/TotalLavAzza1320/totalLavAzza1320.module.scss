@@ -30,17 +30,20 @@
             }
             .reaction {
                 display: flex;
-                align-items: center;
                 justify-content: center;
+                align-items: center;
+                overflow: hidden;
+                cursor: pointer;
                 position: absolute;
                 bottom: 175px;
                 right: 19px;
                 width: 50px;
                 height: 50px;
                 border-radius: 50%;
-                background-color: #fff;
                 box-shadow: 0px 20px 60px rgba(124, 124, 124, 0.2);
-                cursor: pointer;
+                img {
+                    object-position: 0px 20px;
+                }
             }
 
             .wrap-info {
