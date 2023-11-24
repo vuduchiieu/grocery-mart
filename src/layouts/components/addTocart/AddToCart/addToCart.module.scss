@@ -1,0 +1,359 @@
+.add-to-cart {
+    display: flex;
+    justify-content: center;
+    padding-top: 30px;
+    height: 1160px;
+    background-color: #fdf6f6;
+    .link-to {
+        display: flex;
+        width: 1340px;
+        height: 64px;
+        align-items: center;
+        border-radius: 10px;
+        background: #fff;
+        box-shadow: 0px 20px 60px 10px rgba(237, 237, 246, 0.2);
+        p {
+            color: #9e9da8;
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 24px;
+            margin-left: 20px;
+        }
+        img {
+            margin: 0 0 0 8px;
+        }
+        p:last-child {
+            color: #1a162e;
+        }
+    }
+    .main {
+        display: flex;
+        justify-content: space-between;
+        width: 1340px;
+        height: 914px;
+        margin-top: 30px;
+        .cart {
+            display: flex;
+            flex-direction: column;
+            width: 859px;
+            height: 1026px;
+            padding: 30px;
+            border-radius: 20px;
+            background: #fff;
+            box-shadow: 0px 20px 60px 10px rgba(237, 237, 246, 0.2);
+            .list-product {
+                width: 830px;
+                max-height: 790px;
+                overflow-y: auto;
+                .products {
+                    .product {
+                        display: flex;
+                        position: relative;
+                        margin: 0 20px 30px 0;
+                        &::before {
+                            content: "";
+                            position: absolute;
+                            bottom: -14px;
+                            right: 0px;
+                            width: 800px;
+                            height: 1px;
+                            background: #d2d1d6;
+                        }
+
+                        img {
+                            width: 175px;
+                            height: 172px;
+                        }
+                        .profile-product {
+                            .desc-price {
+                                display: flex;
+                                justify-content: space-between;
+                                margin-top: 10px;
+                                h2 {
+                                    width: 374px;
+                                    color: #1a162e;
+                                    font-size: 18px;
+                                    font-weight: 700;
+                                    line-height: 26px;
+                                }
+                                p {
+                                    width: 250px;
+                                    color: #1a162e;
+                                    text-align: right;
+                                    font-size: 22px;
+                                    font-weight: 700;
+                                    line-height: 32px;
+                                }
+                            }
+                            .stock-price {
+                                display: flex;
+                                position: relative;
+                                margin-top: 16px;
+                                &::after {
+                                    content: "";
+                                    position: absolute;
+                                    top: 5px;
+                                    left: 62px;
+                                    width: 1px;
+                                    height: 16px;
+                                    background-color: #9e9da8;
+                                }
+                                p:first-child {
+                                    color: #9e9da8;
+                                    font-size: 18px;
+                                    font-weight: 400;
+                                    line-height: 26px;
+                                }
+                                p:last-child {
+                                    margin-left: 16px;
+                                    color: #67b044;
+                                    font-size: 18px;
+                                    font-weight: 500;
+                                    line-height: 26px;
+                                }
+                            }
+                            .option {
+                                display: flex;
+                                justify-content: space-between;
+                                position: relative;
+                                margin-top: 16px;
+                                .select {
+                                    display: flex;
+                                    select {
+                                        width: 137px;
+                                        height: 44px;
+                                        padding: 10px 20px;
+                                        border-radius: 10px;
+                                        border: 1px solid #d2d1d6;
+                                        color: #1a162e;
+                                        font-size: 15px;
+                                        font-weight: 700;
+                                        line-height: 22px;
+                                    }
+                                    .up-down {
+                                        display: flex;
+                                        align-items: center;
+                                        justify-content: space-between;
+                                        width: 115px;
+                                        height: 44px;
+                                        margin-left: 20px;
+                                        padding: 10px 20px;
+                                        border-radius: 10px;
+                                        border: 1px solid #d2d1d6;
+                                        button {
+                                            cursor: pointer;
+                                            background-color: #fff;
+                                            img {
+                                                width: 20px;
+                                                height: 20px;
+                                            }
+                                        }
+                                        p {
+                                            color: #1a162e;
+                                            font-size: 15px;
+                                            font-weight: 700;
+                                            line-height: 22px;
+                                        }
+                                    }
+                                }
+
+                                .heart-delete {
+                                    display: flex;
+                                    .heart,
+                                    .delete {
+                                        display: flex;
+                                        align-items: center;
+                                        border: none;
+                                        button {
+                                            background-color: #fff;
+                                            p {
+                                                margin-left: 10px;
+                                                font-size: 16px;
+                                                font-weight: 400;
+                                                line-height: 24px;
+                                            }
+                                        }
+                                    }
+                                    .heart {
+                                        position: relative;
+                                        margin-right: 30px;
+                                        img {
+                                            position: absolute;
+                                            overflow: hidden;
+                                            right: -15px;
+                                            top: -46px;
+                                        }
+                                        p {
+                                            font-size: 16px;
+                                            font-weight: 400;
+                                            line-height: 24px;
+                                        }
+                                    }
+                                    .delete {
+                                        background-color: #fff;
+                                        img {
+                                            width: 24px;
+                                            height: 24px;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                .no-products {
+                    display: flex;
+                    justify-content: center;
+                }
+            }
+            .price-product {
+                display: flex;
+                justify-content: space-between;
+                width: 800px;
+                height: 155px;
+                margin-top: 30px;
+                .continue-shopping {
+                    display: flex;
+                    justify-content: center;
+                    width: 221px;
+                    height: 26px;
+                    margin-top: 129px;
+                    p {
+                        color: #1a162e;
+                        font-size: 18px;
+                        font-weight: 700;
+                        line-height: 26px;
+                        margin-left: 10px;
+                    }
+                }
+                .price {
+                    width: 287px;
+                    height: 155px;
+                    .subtotal,
+                    .shipping,
+                    .total {
+                        display: flex;
+                        justify-content: space-between;
+                        p {
+                            color: #1a162e;
+                            font-size: 18px;
+                            line-height: 26px;
+                        }
+                    }
+                    .shipping {
+                        margin-top: 10px;
+                    }
+                    .total {
+                        position: relative;
+                        margin-top: 61px;
+                        p {
+                            font-size: 22px;
+                            line-height: 32px;
+                            font-weight: 700;
+                        }
+                        &::after {
+                            content: "";
+                            position: absolute;
+                            top: -30px;
+                            left: 0;
+                            width: 287px;
+                            height: 1px;
+                            background: #d2d1d6;
+                        }
+                    }
+                }
+            }
+        }
+        .wrap {
+            .continue-to-checkout {
+                width: 391px;
+                height: 311px;
+                padding: 30px;
+                border-radius: 20px;
+                background: #fff;
+                box-shadow: 0px 20px 60px 10px rgba(237, 237, 246, 0.2);
+                .subtotal,
+                .price,
+                .shipping,
+                .estimated-total {
+                    display: flex;
+                    justify-content: space-between;
+                    margin-bottom: 14px;
+                    p {
+                        color: #1a162e;
+                        font-size: 16px;
+                        font-weight: 700;
+                        line-height: 24px;
+                        span {
+                            font-weight: 500;
+                        }
+                    }
+                }
+                .estimated-total {
+                    position: relative;
+                    margin-top: 28px;
+                    &::after {
+                        content: "";
+                        position: absolute;
+                        top: -14px;
+                        left: 0;
+                        width: 331px;
+                        height: 1px;
+                        background: #d2d1d6;
+                    }
+                }
+                .Continue-to-checkout {
+                    margin-top: 20px;
+                    width: 331px;
+                    padding: 18px 0;
+                    border-radius: 50px;
+                    background: #ffb700;
+                    color: #1a162e;
+                    font-size: 18px;
+                    font-weight: 700;
+                    &:hover {
+                        cursor: pointer;
+                        opacity: 0.8;
+                    }
+                }
+            }
+            .gift {
+                display: flex;
+                align-items: center;
+                margin-top: 30px;
+                width: 391px;
+                height: 136px;
+                padding: 30px;
+                border-radius: 20px;
+                background: #fff;
+                box-shadow: 0px 20px 60px 10px rgba(237, 237, 246, 0.2);
+                .git-icon {
+                    position: relative;
+                    width: 76px;
+                    height: 76px;
+                    img {
+                        position: absolute;
+                        top: -48px;
+                        right: -82px;
+                    }
+                }
+                .send-gift {
+                    margin-left: 20px;
+                    p:first-child {
+                        color: #1a162e;
+                        font-size: 18px;
+                        font-style: normal;
+                        font-weight: 700;
+                        line-height: 26px;
+                    }
+                    p:last-child {
+                        margin-top: 10px;
+                        font-size: 14px;
+                        font-weight: 400;
+                        line-height: 20px;
+                    }
+                }
+            }
+        }
+    }
+}

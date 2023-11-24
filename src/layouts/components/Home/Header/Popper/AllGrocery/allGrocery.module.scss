@@ -1,0 +1,88 @@
+.list-grocery {
+    margin-left: -50px;
+    padding-top: 6px;
+    position: relative;
+    .LIST_GROCERY {
+        .wrap-title {
+            display: flex;
+            align-items: center;
+            margin-bottom: 26px;
+            .title {
+                color: #1a162e;
+                font-family: Gordita;
+                font-size: 16px;
+                font-weight: 700;
+                line-height: 24px;
+                margin-left: 10px;
+            }
+        }
+        .children {
+            margin-left: 46px;
+            li {
+                color: #1a162e;
+                font-family: Gordita;
+                font-size: 14px;
+                font-weight: 400;
+                line-height: 20px;
+                margin-bottom: 14px;
+                &:hover {
+                    cursor: pointer;
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+    .LIST_GROCERY:first-child {
+        width: 211px;
+        height: 138px;
+    }
+    .LIST_GROCERY:nth-child(2) {
+        position: absolute;
+        width: 211px;
+        height: 384px;
+        top: 168px;
+        left: 0;
+    }
+    .LIST_GROCERY:nth-child(3) {
+        position: absolute;
+        width: 209px;
+        height: 384px;
+        top: -10px;
+        left: 320px;
+    }
+    .LIST_GROCERY:nth-child(4) {
+        position: absolute;
+        width: 209px;
+        height: 384px;
+        top: 346px;
+        left: 320px;
+    }
+    .LIST_GROCERY:nth-child(5) {
+        position: absolute;
+        width: 182px;
+        height: 384px;
+        top: -10px;
+        left: 620px;
+    }
+    .LIST_GROCERY:nth-child(6) {
+        position: absolute;
+        width: 182px;
+        height: 384px;
+        top: 232px;
+        left: 622px;
+    }
+    .LIST_GROCERY:nth-child(7) {
+        position: absolute;
+        width: 253px;
+        height: 384px;
+        top: -10px;
+        left: 900px;
+    }
+    .LIST_GROCERY:last-child {
+        position: absolute;
+        width: 253px;
+        height: 384px;
+        top: 221px;
+        left: 902px;
+    }
+}

@@ -1,0 +1,70 @@
+.review-product {
+    width: 1341px;
+    height: 322px;
+    margin-top: 30px;
+    .nav-bar {
+        display: flex;
+        p {
+            margin-right: 60px;
+            color: #9e9da8;
+            font-size: 22px;
+            font-weight: 400;
+            line-height: 32px;
+            &:nth-child(3) {
+                color: #1a162e;
+                font-size: 22px;
+                font-weight: 700;
+                line-height: 32px;
+            }
+        }
+    }
+    h2 {
+        margin-top: 30px;
+        color: #1a162e;
+        font-size: 24px;
+        font-weight: 700;
+        line-height: 34px;
+    }
+    .wrap {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 30px;
+        .peoples-rating {
+            width: 367px;
+            height: 136px;
+            margin: 30px;
+            border-radius: 16px;
+            background: #fafafd;
+            .people {
+                display: flex;
+                .information {
+                    margin-left: 20px;
+                    .name {
+                        color: #1a162e;
+                        font-size: 22px;
+                        font-weight: 700;
+                        line-height: 32px;
+                    }
+                    .comment {
+                        margin-top: 10px;
+                        color: #1a162e;
+                        font-size: 16px;
+                        font-weight: 400;
+                        line-height: 24px;
+                    }
+                }
+            }
+            .start-review {
+                display: flex;
+                margin-top: 20px;
+                p {
+                    margin-left: 20px;
+                    color: #1a162e;
+                    font-size: 18px;
+                    font-weight: 700;
+                    line-height: 26px;
+                }
+            }
+        }
+    }
+}

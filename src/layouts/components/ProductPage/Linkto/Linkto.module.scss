@@ -1,0 +1,30 @@
+.link-to {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    width: 1340px;
+    height: 64px;
+    margin-top: 30px;
+    border-radius: 10px;
+    background: #f6f6f6;
+    box-shadow: 0px 20px 60px 10px rgba(237, 237, 246, 0.2);
+    .departments,
+    .lavAzza,
+    .product {
+        display: flex;
+        margin-left: 20px;
+        p {
+            color: #9e9da8;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 24px;
+            margin-right: 8px;
+        }
+    }
+    .product {
+        p {
+            color: #1a162e;
+            font-weight: 700;
+        }
+    }
+}

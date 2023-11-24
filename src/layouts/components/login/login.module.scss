@@ -1,0 +1,102 @@
+.login {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    width: 100vw;
+    height: 100vh;
+    background-color: #fff;
+    .banner {
+        width: 720px;
+        background-color: #fafafd;
+        padding: 269px 149px;
+        p {
+            margin-top: 49px;
+            font-family: Gordita;
+            width: 412px;
+            color: #1a162e;
+            text-align: center;
+            font-size: 18px;
+            font-weight: 700;
+            line-height: 26px;
+        }
+    }
+    .children-login {
+        width: 720px;
+        .wrap {
+            width: 460px;
+            height: 664px;
+            margin: 50px 130px 52px 130px;
+            .logo {
+                display: flex;
+                justify-content: center;
+                h1 {
+                    margin-left: 14px;
+                    color: #1a162e;
+                    font-family: Gordita;
+                    font-size: 22px;
+                    font-weight: 700;
+                    line-height: 32px;
+                }
+            }
+            .title {
+                width: 460px;
+                height: 98px;
+                margin-top: 50px;
+                h3 {
+                    color: #1a162e;
+                    text-align: center;
+                    font-family: Gordita;
+                    font-size: 30px;
+                    font-style: normal;
+                    font-weight: 500;
+                    line-height: 44px;
+                }
+                p {
+                    margin-top: 10px;
+                    width: 460px;
+                    color: #9e9da8;
+                    text-align: center;
+                    font-family: Gordita;
+                    font-size: 15px;
+                    font-style: normal;
+                    font-weight: 500;
+                    line-height: 22px;
+                }
+            }
+            .form {
+                width: 460px;
+                height: 244px;
+                margin-top: 60px;
+            }
+            .submit {
+                margin-top: 50px;
+
+                .sign-in-with-gmail {
+                    margin-top: 30px;
+                }
+            }
+            .account-yet {
+                display: flex;
+                width: 302px;
+                height: 26px;
+                margin-top: 180px;
+                margin-left: 100px;
+                p {
+                    color: #9e9da8;
+                    font-family: Gordita;
+                    font-size: 18px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: 26px;
+                    margin-right: 10px;
+                }
+                .link-submit {
+                    color: #0071dc;
+                    font-size: 18px;
+                    font-weight: 700;
+                    line-height: 26px;
+                }
+            }
+        }
+    }
+}

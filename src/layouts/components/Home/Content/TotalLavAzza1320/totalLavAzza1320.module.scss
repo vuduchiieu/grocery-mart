@@ -1,0 +1,88 @@
+.total-lavAzza-1320 {
+    margin: 40px 50px;
+    .title {
+        display: flex;
+        justify-content: space-between;
+    }
+    .list-lavAzza {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        width: 1338px;
+        height: 458px;
+        .wrap {
+            position: relative;
+            margin-top: 21px;
+            border-radius: 20px;
+            background: #fff;
+            box-shadow: 0px 20px 60px 10px rgba(237, 237, 246, 0.2);
+            transition: transform 0.3s;
+            width: 312px;
+            height: 458px;
+            &:hover {
+                transform: scale(1.05);
+            }
+            .img-product {
+                img {
+                    width: 280px;
+                    height: 284px;
+                }
+            }
+            .reaction {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                position: absolute;
+                bottom: 175px;
+                right: 19px;
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                background-color: #fff;
+                box-shadow: 0px 20px 60px rgba(124, 124, 124, 0.2);
+                cursor: pointer;
+            }
+
+            .wrap-info {
+                padding: 0 24px;
+                h3 {
+                    width: 280px;
+                    height: 48px;
+                    color: #1a162e;
+                    font-family: Gordita;
+                    font-size: 16px;
+                    font-weight: 700;
+                    line-height: 24px;
+                }
+                .title {
+                    margin: 16px 0;
+                    color: #9e9da8;
+                    font-family: Gordita;
+                    font-size: 15px;
+                    font-weight: 400;
+                    line-height: 22px;
+                }
+                .warp-price-start {
+                    display: flex;
+                    justify-content: space-between;
+
+                    p:first-of-type {
+                        color: #1a162e;
+                        font-family: Gordita;
+                        font-size: 16px;
+                        font-weight: 700;
+                        line-height: 24px;
+                    }
+
+                    .ratting {
+                        display: flex;
+                        align-items: center;
+                        img {
+                            margin: 0 6px 2px 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

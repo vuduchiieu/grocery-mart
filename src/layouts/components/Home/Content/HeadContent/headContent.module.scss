@@ -1,0 +1,44 @@
+.head-content {
+    display: flex;
+    justify-content: space-between;
+    width: 1340px;
+    height: 455px;
+    border-radius: 20px;
+    background: #77dae6;
+    margin: 40px 50px;
+    h1 {
+        width: 421px;
+        height: 120px;
+        color: #fff;
+        font-size: 42px;
+        font-weight: 700;
+        line-height: 1.42;
+        margin-top: 67px;
+        margin-left: 70px;
+    }
+}
+.img {
+    position: relative;
+    width: 445px;
+    height: 455px;
+    .background {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+    }
+    .vector-background {
+        position: absolute;
+        bottom: 0;
+        left: -77px;
+    }
+    .package {
+        position: absolute;
+        bottom: 96px;
+        left: 71px;
+    }
+    .glass {
+        position: absolute;
+        bottom: 73px;
+        left: 268px;
+    }
+}

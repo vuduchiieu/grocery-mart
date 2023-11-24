@@ -1,0 +1,210 @@
+.listDepartment {
+    position: relative;
+    color: #0071dc;
+    font-weight: 500;
+    .list-electronics {
+        position: absolute;
+        top: -113px;
+        left: 207px;
+        &::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 18px;
+            width: 1px;
+            height: 522px;
+            background: #d2d1d6;
+        }
+
+        .childrenElectronics:first-child {
+            margin: 0;
+            width: 228px;
+            height: 261px;
+
+            .title {
+                display: flex;
+                align-items: center;
+                color: #1a162e;
+                font-family: Gordita;
+                font-size: 16px;
+                font-weight: 700;
+                line-height: 1.5;
+                img {
+                    margin: 0 20px 0 30px;
+                }
+            }
+            .list {
+                width: 178px;
+                height: 224px;
+                margin: 0;
+                margin-left: 84px;
+                li {
+                    padding-top: 14px;
+                    color: #1a162e;
+                    font-family: Gordita;
+                    font-size: 14px;
+                    font-weight: 400;
+                    line-height: 1.42;
+                    &:hover {
+                        cursor: pointer;
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+        .childrenElectronics:nth-child(2) {
+            margin: 0;
+            padding-top: 30px;
+            width: 234px;
+            height: 261px;
+            .title {
+                display: flex;
+                align-items: center;
+                font-family: Gordita;
+                color: #1a162e;
+                font-size: 16px;
+                font-weight: 700;
+                line-height: 1.5;
+                img {
+                    margin: 0 20px 0 30px;
+                }
+            }
+            .list {
+                width: 178px;
+                height: 224px;
+                margin: 0;
+                margin-left: 84px;
+                li {
+                    padding-top: 14px;
+                    color: #1a162e;
+                    font-family: Gordita;
+                    font-size: 14px;
+                    font-weight: 400;
+                    line-height: 1.42;
+                    &:hover {
+                        cursor: pointer;
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+        .childrenElectronics:nth-child(3) {
+            position: absolute;
+            top: -45px;
+            right: -276px;
+            margin: 0;
+            padding-top: 30px;
+            width: 228px;
+            height: 522px;
+            .title {
+                display: flex;
+                align-items: center;
+                color: #1a162e;
+                font-family: Gordita;
+                font-size: 16px;
+                font-weight: 700;
+                line-height: 1.5;
+                img {
+                    margin: 0 20px 0 30px;
+                }
+            }
+            .list {
+                width: 178px;
+                height: 224px;
+                margin: 0;
+                margin-left: 84px;
+                li {
+                    padding-top: 14px;
+                    color: #1a162e;
+                    font-family: Gordita;
+                    font-size: 14px;
+                    font-weight: 400;
+                    line-height: 1.42;
+                    &:hover {
+                        cursor: pointer;
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+        .childrenElectronics:nth-child(4) {
+            position: absolute;
+            top: -45px;
+            left: 590px;
+            margin: 0;
+            padding-top: 30px;
+            width: 228px;
+            height: 261px;
+
+            .title {
+                display: flex;
+                align-items: center;
+                color: #1a162e;
+                font-family: Gordita;
+                font-size: 16px;
+                font-weight: 700;
+                line-height: 1.5;
+                img {
+                    margin: 0 20px 0 30px;
+                }
+            }
+            .list {
+                width: 178px;
+                height: 224px;
+                margin: 0;
+                margin-left: 84px;
+                li {
+                    padding-top: 14px;
+                    color: #1a162e;
+                    font-family: Gordita;
+                    font-size: 14px;
+                    font-weight: 400;
+                    line-height: 1.42;
+                    &:hover {
+                        cursor: pointer;
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+        .childrenElectronics:last-child {
+            position: absolute;
+            top: 134px;
+            left: 590px;
+            margin: 0;
+            padding-top: 30px;
+            width: 228px;
+            height: 261px;
+            .title {
+                display: flex;
+                align-items: center;
+                color: #1a162e;
+                font-family: Gordita;
+                font-size: 16px;
+                font-weight: 700;
+                line-height: 1.5;
+                img {
+                    margin: 0 20px 0 30px;
+                }
+            }
+            .list {
+                width: 178px;
+                height: 224px;
+                margin: 0;
+                margin-left: 84px;
+                li {
+                    padding-top: 14px;
+                    color: #1a162e;
+                    font-family: Gordita;
+                    font-size: 14px;
+                    font-weight: 400;
+                    line-height: 1.42;
+                    &:hover {
+                        cursor: pointer;
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+    }
+}

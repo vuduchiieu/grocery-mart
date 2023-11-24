@@ -1,0 +1,19 @@
+.not-found {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img {
+        position: relative;
+    }
+    p {
+        position: absolute;
+        bottom: 40px;
+        span {
+            color: #265bff;
+            &:hover {
+                cursor: pointer;
+                opacity: 0.8;
+            }
+        }
+    }
+}

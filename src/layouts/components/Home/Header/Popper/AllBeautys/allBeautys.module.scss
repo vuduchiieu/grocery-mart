@@ -1,0 +1,74 @@
+.list-beautys {
+    margin-left: -50px;
+    padding-top: 6px;
+    position: relative;
+    .LIST_BEAUTYS {
+        .wrap-title {
+            display: flex;
+            align-items: center;
+            margin-bottom: 26px;
+            .title {
+                color: #1a162e;
+                font-family: Gordita;
+                font-size: 16px;
+                font-weight: 700;
+                line-height: 24px;
+                margin-left: 10px;
+            }
+        }
+        .children {
+            margin-left: 46px;
+            li {
+                color: #1a162e;
+                font-family: Gordita;
+                font-size: 14px;
+                font-weight: 400;
+                line-height: 20px;
+                margin-bottom: 14px;
+                &:hover {
+                    cursor: pointer;
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+    .LIST_BEAUTYS:first-child {
+        width: 211px;
+        height: 138px;
+    }
+    .LIST_BEAUTYS:nth-child(2) {
+        position: absolute;
+        width: 211px;
+        height: 384px;
+        top: 300px;
+        left: 0;
+    }
+    .LIST_BEAUTYS:nth-child(3) {
+        position: absolute;
+        width: 209px;
+        height: 384px;
+        top: -10px;
+        left: 320px;
+    }
+    .LIST_BEAUTYS:nth-child(4) {
+        position: absolute;
+        width: 209px;
+        height: 384px;
+        top: 346px;
+        left: 320px;
+    }
+    .LIST_BEAUTYS:nth-child(5) {
+        position: absolute;
+        width: 182px;
+        height: 384px;
+        top: -10px;
+        left: 620px;
+    }
+    .LIST_BEAUTYS:last-child {
+        position: absolute;
+        width: 253px;
+        height: 384px;
+        top: -10px;
+        left: 900px;
+    }
+}

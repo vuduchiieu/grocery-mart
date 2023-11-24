@@ -1,0 +1,149 @@
+.content {
+    width: 956px;
+    height: 942px;
+    padding: 30px;
+    margin-left: 30px;
+    border-radius: 20px;
+    box-shadow: 0px 20px 60px 10px rgba(237, 237, 246, 0.2);
+    background-color: #fff;
+    .wallet,
+    .account-info,
+    .lists {
+        width: 905px;
+        height: 247px;
+        h3 {
+            color: #1a162e;
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 34px;
+        }
+        p {
+            margin-top: 4px;
+            color: #1a162e;
+            font-size: 15px;
+            font-weight: 400;
+            line-height: 22px;
+        }
+    }
+    .wallet {
+        .card {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 16px;
+        }
+    }
+    .account-info {
+        margin-top: 30px;
+        .info {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 16px;
+            height: 168px;
+            .email-address,
+            .phone-number,
+            .add-an-address {
+                display: flex;
+                width: 442px;
+                height: 74px;
+                padding: 10px;
+                border-radius: 10px;
+                background: #f6f6f6;
+                &:hover {
+                    cursor: pointer;
+                }
+                img {
+                    width: 54px;
+                    height: 54px;
+                    padding: 15px;
+                    border-radius: 8px;
+                    background: #fff;
+                }
+
+                div {
+                    margin-left: 10px;
+                    h4 {
+                        color: #1a162e;
+                        font-size: 15px;
+                        font-weight: 700;
+                        line-height: 22px;
+                    }
+
+                    p {
+                        span {
+                            margin-top: 6px;
+                            color: #1a162e;
+                            font-size: 14px;
+                            font-weight: 400;
+                            line-height: 20px;
+                        }
+                    }
+                }
+            }
+
+            .phone-number {
+                margin-left: 20px;
+            }
+        }
+    }
+    .lists {
+        .wrap {
+            width: 928px;
+            height: 270px;
+            margin-top: 14px;
+            overflow-y: auto;
+
+            .list-products {
+                display: flex;
+                position: relative;
+                margin-bottom: 40px;
+                width: 896px;
+                height: 108px;
+                img {
+                    width: 151px;
+                    height: 130px;
+                }
+                .name {
+                    color: #1a162e;
+                    font-size: 15px;
+                    font-weight: 700;
+                    line-height: 22px;
+                }
+                .price {
+                    display: flex;
+                    margin-top: 20px;
+                    p {
+                        color: #1a162e;
+                        font-size: 22px;
+                        font-weight: 700;
+                        line-height: 32px;
+                    }
+                    button {
+                        height: 42px;
+                        margin-left: 20px;
+                        padding: 10px 20px;
+                        border-radius: 20px;
+                        background: #ffb700;
+                        color: #1a162e;
+                        font-size: 15px;
+                        font-weight: 700;
+                        line-height: 22px;
+                        &:hover {
+                            cursor: pointer;
+                            opacity: 0.8;
+                        }
+                    }
+                }
+
+                &::before {
+                    content: "";
+                    position: absolute;
+                    bottom: -20px;
+                    left: 0;
+                    width: 896px;
+                    height: 1px;
+                    background: #d2d1d6;
+                }
+            }
+        }
+    }
+}
