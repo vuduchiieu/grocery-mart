@@ -10,7 +10,7 @@ const cx = classNames.bind(styles);
 
 function PersonalInfo({ personal, setPersonal }) {
     const { setName, name, setPhone, phone } = useAppContext();
-    const { register, handleSubmit } = useForm();
+    const { register, handleSubmit, setValue } = useForm();
     const [showPassword, setShowPassword] = useState(false);
 
     const handleBack = () => {
@@ -18,6 +18,12 @@ function PersonalInfo({ personal, setPersonal }) {
     };
     const toggleShowPassword = () => {
         setShowPassword(!showPassword);
+    };
+
+    const handleInputChange = (e) => {
+        if (e.target.value.length > 10) {
+            setValue("phone", e.target.value.substring(0, 10));
+        }
     };
 
     const onSubmit = (data) => {
@@ -65,6 +71,7 @@ function PersonalInfo({ personal, setPersonal }) {
                             defaultValue={phone || userData.phone}
                             placeholder="+008 01234 56789"
                             {...register("phone")}
+                            onChange={handleInputChange}
                         />
                     </div>
                     <div className={cx("fourth-input")}>

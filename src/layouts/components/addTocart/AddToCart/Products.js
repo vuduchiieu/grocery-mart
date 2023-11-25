@@ -1,32 +1,17 @@
 import classNames from "classnames/bind";
 import styles from "./addToCart.module.scss";
 import icon from "~/assets/icon";
-import { products } from "~/components/productList/productList";
 import { useAppContext } from "~/components/Context/AppContext";
 
 const cx = classNames.bind(styles);
 
 function Products() {
-    const { removeCartItem, updateCartItem, listHeart } = useAppContext();
-
-    const uniqueProducts = Array.from(
-        new Set(products.map((item) => item.productName))
-    )
-        .map((productName) =>
-            products.find((item) => item.productName === productName)
-        )
-        .sort((a, b) => a.id - b.id);
-
-    const productQuantities = {};
-    products.forEach((item) => {
-        if (productQuantities[item.id]) {
-            productQuantities[item.id]++;
-        } else {
-            productQuantities[item.id] = 1;
-        }
-    });
-
-    const removeAllCartItem = (item) => {};
+    const {
+        removeCartItem,
+        updateCartItem,
+        uniqueProducts,
+        productQuantities,
+    } = useAppContext();
 
     return (
         <div className={cx("products")}>
@@ -72,7 +57,7 @@ function Products() {
                                     <img src={icon.delete} />
                                     <button
                                         onClick={() => {
-                                            removeAllCartItem(item);
+                                            removeCartItem(item);
                                         }}
                                     >
                                         <p> Delete</p>

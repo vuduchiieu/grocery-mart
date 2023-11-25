@@ -164,8 +164,16 @@
                                         display: flex;
                                         align-items: center;
                                         border: none;
+                                        &:hover {
+                                            cursor: pointer;
+                                            text-decoration: underline;
+                                        }
                                         button {
                                             background-color: #fff;
+                                            &:hover {
+                                                cursor: pointer;
+                                                text-decoration: underline;
+                                            }
                                             p {
                                                 margin-left: 10px;
                                                 font-size: 16px;

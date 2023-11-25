@@ -1,18 +1,21 @@
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import * as yup from "yup";
 
 import classNames from "classnames/bind";
 import styles from "./formLogin.module.scss";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import icon from "~/assets/icon";
+import { AppContext } from "~/components/Context/AppContext";
 
 const cx = classNames.bind(styles);
 
 function FormSignUp() {
+    const { setLogin } = useContext(AppContext);
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+    const [check, setCheck] = useState(false);
     const schema = yup.object().shape({
         email: yup
             .string()
@@ -49,6 +52,10 @@ function FormSignUp() {
         setShowConfirmPassword(!showConfirmPassword);
     };
 
+    const toggleCheck = () => {
+        setCheck(!check);
+    };
+
     const onSubmit = (data) => {
         const userData = {
             email: data.email,
@@ -71,28 +78,38 @@ function FormSignUp() {
         allUsers.push(userData);
         localStorage.setItem("userData", JSON.stringify(allUsers));
         alert(`Sign Up Success: ${userData.email}`);
-        navigate("/signin");
+        setLogin(true);
+        navigate("/");
     };
     return (
-        <>
+        <div className={cx("sign-up")}>
             <form onSubmit={handleSubmit(onSubmit)}>
-                <div className={cx("wrap-form")}>
+                <div>
                     <input {...register("email")} placeholder="Email" />
-                    {errors.email && (
-                        <p className={cx("error-message")}>
-                            {errors.email.message}
-                        </p>
-                    )}
+                    <img
+                        className={cx("icon-email")}
+                        src={icon.emailIcon}
+                        alt=""
+                    />
+                    <div className={cx("error")}>
+                        {errors.email && (
+                            <p className={cx("error-message")}>
+                                {errors.email.message}
+                            </p>
+                        )}
+                    </div>
                     <input
                         {...register("password")}
                         placeholder="Password"
                         type={showPassword ? "text" : "password"}
                     />
-                    {errors.password && (
-                        <p className={cx("error-message")}>
-                            {errors.password.message}
-                        </p>
-                    )}
+                    <div className={cx("error")}>
+                        {errors.password && (
+                            <p className={cx("error-message")}>
+                                {errors.password.message}
+                            </p>
+                        )}
+                    </div>
                     <label className={cx("password")}>
                         {showPassword === true ? (
                             <img src="https://static.xx.fbcdn.net/rsrc.php/v3/yk/r/swFqSxKYa5M.png" />
@@ -105,7 +122,6 @@ function FormSignUp() {
                             onChange={toggleShowPassword}
                         />
                     </label>
-
                     <input
                         {...register("confirmPassword", {
                             required: "This field is required",
@@ -113,11 +129,13 @@ function FormSignUp() {
                         placeholder="Confirm Password"
                         type={showConfirmPassword ? "text" : "password"}
                     />
-                    {errors.confirmPassword && (
-                        <p className={cx("error-message")}>
-                            {errors.confirmPassword.message}
-                        </p>
-                    )}
+                    <div className={cx("error")} style={{ height: 20 }}>
+                        {errors.confirmPassword && (
+                            <p className={cx("error-message")}>
+                                {errors.confirmPassword.message}
+                            </p>
+                        )}
+                    </div>
                     <label className={cx("confirm-password")}>
                         {showConfirmPassword === true ? (
                             <img src="https://static.xx.fbcdn.net/rsrc.php/v3/yk/r/swFqSxKYa5M.png" />
@@ -132,19 +150,32 @@ function FormSignUp() {
                     </label>
                     <div className={cx("recovery")}>
                         <label>
-                            <input type="checkbox" value="Bike" />
-                            Set as default card
+                            {check === true ? (
+                                <img src={icon.check} />
+                            ) : (
+                                <img src={icon.noCheck} />
+                            )}
+                            <p>Set as default card</p>
+                            <input
+                                type="checkbox"
+                                checked={check}
+                                onChange={toggleCheck}
+                            />
                         </label>
-                        <button>Recovery Password</button>
+                        <Link to="" className={cx("recovery-password")}>
+                            Recovery Password
+                        </Link>
                     </div>
                 </div>
-                <button className={cx("button")}>Sign Up</button>
+                <button className={cx("button")}>
+                    <p>Sign Up</p>
+                </button>
             </form>
             <button className={cx("loginWithGG")}>
                 <img src={icon.google} alt="" />
                 <p>Sign in with Gmail</p>
             </button>
-        </>
+        </div>
     );
 }
 

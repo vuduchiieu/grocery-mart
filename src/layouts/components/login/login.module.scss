@@ -2,13 +2,13 @@
     display: flex;
     justify-content: center;
     margin: 0 auto;
-    width: 100vw;
+    width: 1440px;
     height: 100vh;
     background-color: #fff;
     .banner {
         width: 720px;
         background-color: #fafafd;
-        padding: 269px 149px;
+        padding: 180px 149px;
         p {
             margin-top: 49px;
             font-family: Gordita;
@@ -42,45 +42,37 @@
                 width: 460px;
                 height: 98px;
                 margin-top: 50px;
+
                 h3 {
                     color: #1a162e;
                     text-align: center;
                     font-family: Gordita;
                     font-size: 30px;
-                    font-style: normal;
                     font-weight: 500;
                     line-height: 44px;
                 }
                 p {
+                    margin: auto;
                     margin-top: 10px;
-                    width: 460px;
+                    width: 420px;
+                    height: 44px;
                     color: #9e9da8;
                     text-align: center;
                     font-family: Gordita;
                     font-size: 15px;
-                    font-style: normal;
                     font-weight: 500;
                     line-height: 22px;
                 }
             }
             .form {
-                width: 460px;
-                height: 244px;
                 margin-top: 60px;
             }
-            .submit {
-                margin-top: 50px;
 
-                .sign-in-with-gmail {
-                    margin-top: 30px;
-                }
-            }
             .account-yet {
                 display: flex;
-                width: 302px;
+                justify-content: center;
+                margin-top: 108px;
                 height: 26px;
-                margin-top: 180px;
-                margin-left: 100px;
                 p {
                     color: #9e9da8;
                     font-family: Gordita;

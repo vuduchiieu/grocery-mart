@@ -8,7 +8,6 @@ const cx = classNames.bind(styles);
 
 function TotalLavAzza1320() {
     const { lavAzzaItems, handleReactionClick } = useAppContext();
-
     return (
         <div className={cx("total-lavAzza-1320")}>
             <div className={cx("title")}>

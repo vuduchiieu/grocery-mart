@@ -13,13 +13,13 @@ function Beauty() {
             render={(attrs) => (
                 <div
                     className={cx("popper")}
-                    style={{ right: "-700px " }}
+                    style={{ right: "-691px " }}
                     tabIndex="-1"
                     {...attrs}
                 >
                     <img
                         className={cx("arrow")}
-                        style={{ left: "550px" }}
+                        style={{ left: "570px" }}
                         src={icon.polygon}
                     />
                     <div className={cx("wrap-list-popper")}>

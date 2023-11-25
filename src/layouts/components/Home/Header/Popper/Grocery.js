@@ -13,13 +13,13 @@ function Grocery() {
             render={(attrs) => (
                 <div
                     className={cx("popper")}
-                    style={{ right: "-800px " }}
+                    style={{ right: "-796px " }}
                     tabIndex="-1"
                     {...attrs}
                 >
                     <img
                         className={cx("arrow")}
-                        style={{ left: "455px" }}
+                        style={{ left: "465px" }}
                         src={icon.polygon}
                     />
                     <div className={cx("wrap-list-popper")}>

@@ -10,15 +10,7 @@ import { products } from "~/components/productList/productList";
 const cx = classNames.bind(styles);
 
 function MiniAddToCart() {
-    const { totalPrice } = useAppContext();
-    const uniqueProducts = Array.from(
-        new Set(products.map((item) => item.productName))
-    )
-        .map((productName) =>
-            products.find((item) => item.productName === productName)
-        )
-        .sort((a, b) => a.id - b.id);
-
+    const { totalPrice, uniqueProducts, productQuantities } = useAppContext();
     return (
         <Tippy
             interactive
@@ -36,7 +28,12 @@ function MiniAddToCart() {
                                 <p className={cx("productName")}>
                                     {item.productName}
                                 </p>
-                                <p className={cx("price")}>${item.price}</p>
+                                <div className={cx("wrap")}>
+                                    <p className={cx("price")}>${item.price}</p>
+                                    <p className={cx("quantity")}>
+                                        {productQuantities[item.id]}
+                                    </p>
+                                </div>
                             </div>
                         ))}
                     </div>

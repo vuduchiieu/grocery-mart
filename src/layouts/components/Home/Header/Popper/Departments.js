@@ -15,11 +15,11 @@ function Departments() {
                     className={cx("popper")}
                     tabIndex="-1"
                     {...attrs}
-                    style={{ right: "-905px " }}
+                    style={{ right: "-924px " }}
                 >
                     <img
                         className={cx("arrow")}
-                        style={{ left: "360px" }}
+                        style={{ left: "345px" }}
                         src={icon.polygon}
                     />
                     <div className={cx("wrap-list-popper")}>

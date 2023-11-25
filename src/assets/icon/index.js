@@ -61,6 +61,9 @@ const icon = {
     tick: require("./Tick.svg").default,
     tickActive: require("./TickActive.svg").default,
     google: require("./google.svg").default,
+    check: require("./check.svg").default,
+    noCheck: require("./noCheck.svg").default,
+    emailIcon: require("./emailIcon.svg").default,
 };
 
 export default icon;

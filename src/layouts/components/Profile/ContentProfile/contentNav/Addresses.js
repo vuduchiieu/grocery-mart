@@ -14,7 +14,7 @@ function Addresses({ addresses, setAddresses }) {
         setAddresses(!addresses);
     };
 
-    const { register, handleSubmit } = useForm();
+    const { register, handleSubmit, setValue } = useForm();
     const onSubmit = (data) => {
         const userData = {
             detailed: data.detailed,
@@ -30,6 +30,11 @@ function Addresses({ addresses, setAddresses }) {
         userProfile.push(userData);
         localStorage.setItem("addresses", JSON.stringify(userProfile));
         handleBack();
+    };
+    const handleInputChange = (e) => {
+        if (e.target.value.length > 5) {
+            setValue("dc", e.target.value.substring(0, 5));
+        }
     };
     return (
         <div className={cx("content-nav")}>
@@ -73,6 +78,7 @@ function Addresses({ addresses, setAddresses }) {
                             type="number"
                             placeholder="DC..."
                             {...register("dc")}
+                            onChange={handleInputChange}
                         />
                     </div>
 

@@ -77,11 +77,15 @@
                     height: 92px;
                     border-radius: 20px;
                     background: #f6f6f6;
+                    h3 {
+                        font-weight: 500;
+                    }
                 }
                 .address {
                     display: flex;
                     align-items: center;
                     justify-content: space-between;
+
                     img {
                         cursor: pointer;
                         width: 30px;

@@ -61,6 +61,23 @@ export const Contexts = ({ children }) => {
         }
     };
 
+    //uniqueProducts
+    const uniqueProducts = Array.from(
+        new Set(products.map((item) => item.productName))
+    )
+        .map((productName) =>
+            products.find((item) => item.productName === productName)
+        )
+        .sort((a, b) => a.id - b.id);
+    const productQuantities = {};
+    products.forEach((item) => {
+        if (productQuantities[item.id]) {
+            productQuantities[item.id]++;
+        } else {
+            productQuantities[item.id] = 1;
+        }
+    });
+
     //removeAllCartItem
     const removeAllCartItem = (item) => {};
     //set avatar
@@ -107,6 +124,8 @@ export const Contexts = ({ children }) => {
                 setCartItem,
                 removeCartItem,
                 removeAllCartItem,
+                uniqueProducts,
+                productQuantities,
                 name,
                 setName,
                 phone,
