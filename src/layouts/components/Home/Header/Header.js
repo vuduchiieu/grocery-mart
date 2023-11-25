@@ -12,11 +12,13 @@ import MiniAddToCart from "./Popper/MiniAddToCart/MiniAddToCart";
 
 import { products } from "~/components/productList/productList";
 import img from "~/assets/img";
+import { useState } from "react";
 
 const cx = classNames.bind(styles);
 
 function Header() {
     const { listHeart, login, avatar } = useAppContext();
+    const [seach, setSeach] = useState(false);
     return (
         <div className={cx("wrap-header")}>
             <div className={cx("header")}>
@@ -24,7 +26,10 @@ function Header() {
                     <img src={icon.logo} />
                     <h1>grocerymart</h1>
                 </Link>
-                <div className={cx("nav-bar")}>
+                <div
+                    className={cx("nav-bar")}
+                    style={seach === true ? { marginRight: 20 } : {}}
+                >
                     <div className={cx("departments")}>
                         <Departments />
                     </div>
@@ -38,7 +43,18 @@ function Header() {
                 {login === true ? (
                     <div className={cx("action")}>
                         <div className={cx("search")}>
-                            <img src={icon.search} />
+                            {seach && (
+                                <input
+                                    type="text"
+                                    placeholder="Search for item"
+                                />
+                            )}
+                            <img
+                                onClick={() => {
+                                    setSeach(!seach);
+                                }}
+                                src={icon.search}
+                            />
                         </div>
                         <div className={cx("wrap-rct")}>
                             <div className={cx("reaction")}>
