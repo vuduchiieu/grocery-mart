@@ -12,7 +12,7 @@ import { AppContext } from "~/components/Context/AppContext";
 const cx = classNames.bind(styles);
 
 function FormSignUp() {
-    const { setLogin } = useContext(AppContext);
+    const { setLogin, setEmail, setpassWord } = useContext(AppContext);
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
     const [check, setCheck] = useState(false);
@@ -61,7 +61,6 @@ function FormSignUp() {
             email: data.email,
             password: data.password,
         };
-
         const existingData = localStorage.getItem("userData");
         let allUsers = [];
         if (existingData) {
@@ -77,7 +76,10 @@ function FormSignUp() {
         }
         allUsers.push(userData);
         localStorage.setItem("userData", JSON.stringify(allUsers));
+        setEmail(userData.email);
+        setpassWord(userData.password);
         alert(`Sign Up Success: ${userData.email}`);
+        localStorage.setItem("login", "true");
         setLogin(true);
         navigate("/");
     };

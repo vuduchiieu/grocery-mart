@@ -94,6 +94,9 @@ export const Contexts = ({ children }) => {
         }
         setAvatar(processingImg);
     };
+    //email & passWord
+    const [email, setEmail] = useState();
+    const [passWord, setpassWord] = useState();
     //UserName && phone
     const [name, setName] = useState();
     const [phone, setPhone] = useState();
@@ -126,6 +129,10 @@ export const Contexts = ({ children }) => {
                 removeAllCartItem,
                 uniqueProducts,
                 productQuantities,
+                email,
+                setEmail,
+                passWord,
+                setpassWord,
                 name,
                 setName,
                 phone,

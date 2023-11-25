@@ -8,8 +8,16 @@ import { useAppContext } from "~/components/Context/AppContext";
 const cx = classNames.bind(styles);
 
 function ContentProfile({ personal, setPersonal, addresses, setAddresses }) {
-    const { phone, detailed, town, state, dc, listHeart, updateCartItem } =
-        useAppContext();
+    const {
+        email,
+        phone,
+        detailed,
+        town,
+        state,
+        dc,
+        listHeart,
+        updateCartItem,
+    } = useAppContext();
     const handleInfo = () => {
         setPersonal(!personal);
     };
@@ -35,7 +43,7 @@ function ContentProfile({ personal, setPersonal, addresses, setAddresses }) {
                         <img src={icon.message} alt="" />
                         <div>
                             <h4>Email Address</h4>
-                            <p>{userData.email}</p>
+                            <p>{email || userData.email}</p>
                         </div>
                     </div>
                     <div onClick={handleInfo} className={cx("phone-number")}>

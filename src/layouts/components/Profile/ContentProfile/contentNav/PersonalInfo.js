@@ -9,7 +9,7 @@ import { useAppContext } from "~/components/Context/AppContext";
 const cx = classNames.bind(styles);
 
 function PersonalInfo({ personal, setPersonal }) {
-    const { setName, name, setPhone, phone } = useAppContext();
+    const { email, passWord, setName, name, setPhone, phone } = useAppContext();
     const { register, handleSubmit, setValue } = useForm();
     const [showPassword, setShowPassword] = useState(false);
 
@@ -61,7 +61,7 @@ function PersonalInfo({ personal, setPersonal }) {
                         <input
                             type="text"
                             placeholder="Email"
-                            defaultValue={userData.email}
+                            defaultValue={email || userData.email}
                         />
                     </div>
                     <div className={cx("third-input")}>
@@ -79,7 +79,7 @@ function PersonalInfo({ personal, setPersonal }) {
                         <input
                             type={showPassword ? "text" : "password"}
                             placeholder="Password"
-                            defaultValue={userData.passWord}
+                            defaultValue={passWord || userData.passWord}
                         />
                         <label>
                             {showPassword === true ? (
