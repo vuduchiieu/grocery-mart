@@ -34,7 +34,6 @@
                 justify-content: center;
                 align-items: center;
                 overflow: hidden;
-
                 position: absolute;
                 bottom: 175px;
                 right: 19px;
@@ -53,7 +52,7 @@
 
             .wrap-info {
                 padding: 0 24px;
-                h3 {
+                .desc {
                     width: 265px;
                     height: 48px;
                     color: #1a162e;

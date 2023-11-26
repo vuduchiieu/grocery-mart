@@ -78,7 +78,6 @@ function FormSignUp() {
         localStorage.setItem("userData", JSON.stringify(allUsers));
         setEmail(userData.email);
         setpassWord(userData.password);
-        alert(`Sign Up Success: ${userData.email}`);
         localStorage.setItem("login", "true");
         setLogin(true);
         navigate("/");

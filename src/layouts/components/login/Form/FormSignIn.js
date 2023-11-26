@@ -1,10 +1,10 @@
-import { useForm } from "react-hook-form";
-import classNames from "classnames/bind";
-import styles from "./formLogin.module.scss";
 import { useContext, useState } from "react";
+import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { AppContext } from "~/components/Context/AppContext";
 import icon from "~/assets/icon";
+import classNames from "classnames/bind";
+import styles from "./formLogin.module.scss";
 
 const cx = classNames.bind(styles);
 
@@ -13,10 +13,10 @@ function FormSignIn() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [check, setCheck] = useState(false);
-    const { handleSubmit } = useForm();
     const [showPassword, setShowPassword] = useState(false);
-
     const navigate = useNavigate();
+
+    const { handleSubmit } = useForm();
 
     const toggleShowPassword = () => {
         setShowPassword(!showPassword);
@@ -24,6 +24,7 @@ function FormSignIn() {
     const toggleCheck = () => {
         setCheck(!check);
     };
+    console.log(password);
 
     const onSubmit = (data) => {
         const storedUserData = localStorage.getItem("userData");
@@ -43,7 +44,6 @@ function FormSignIn() {
                 setLogin(false);
             }
         } else {
-            alert("Account does not exist");
             setLogin(false);
         }
     };
@@ -53,10 +53,15 @@ function FormSignIn() {
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div>
                     <input
+                        required
                         type="text"
                         placeholder="Email"
                         value={email}
-                        onChange={(e) => setEmail(e.target.value)}
+                        onChange={(e) => {
+                            if (!e.target.value.includes(" ")) {
+                                setEmail(e.target.value);
+                            }
+                        }}
                     />
                     <img
                         className={cx("icon-email")}
@@ -65,10 +70,15 @@ function FormSignIn() {
                     />
                     <div className={cx("error")}></div>
                     <input
+                        required
                         type={showPassword ? "text" : "password"}
                         placeholder="Password"
                         value={password}
-                        onChange={(e) => setPassword(e.target.value)}
+                        onChange={(e) => {
+                            if (!e.target.value.includes(" ")) {
+                                setPassword(e.target.value);
+                            }
+                        }}
                     />
                     <div className={cx("error")} style={{ height: 20 }}></div>
                     <label className={cx("password")}>
@@ -103,7 +113,7 @@ function FormSignIn() {
                     </div>
                 </div>
                 <button className={cx("button")}>
-                    <p>Sign Up</p>
+                    <p>Login</p>
                 </button>
             </form>
             <button className={cx("loginWithGG")}>

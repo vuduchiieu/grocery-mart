@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useAppContext } from "~/components/Context/AppContext";
 import classNames from "classnames/bind";
 import styles from "./header.module.scss";
@@ -17,8 +18,13 @@ import { useState } from "react";
 const cx = classNames.bind(styles);
 
 function Header() {
-    const { listHeart, login, avatar } = useAppContext();
+    const { listHeart, login, avatar, setLists } = useAppContext();
     const [seach, setSeach] = useState(false);
+    const navigate = useNavigate();
+    const handleForward = () => {
+        setLists(true);
+        navigate("/profile");
+    };
     return (
         <div className={cx("wrap-header")}>
             <div className={cx("header")}>
@@ -57,7 +63,10 @@ function Header() {
                             />
                         </div>
                         <div className={cx("wrap-rct")}>
-                            <div className={cx("reaction")}>
+                            <div
+                                onClick={handleForward}
+                                className={cx("reaction")}
+                            >
                                 <img src={icon.heartNonActive} />
                                 <p>{listHeart.length}</p>
                             </div>

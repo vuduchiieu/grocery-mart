@@ -63,7 +63,7 @@ function MiniAddToCart() {
                 </div>
             )}
         >
-            <div className={cx("wrap-cart-amount")}>
+            <Link to={"/addtocart"} className={cx("wrap-cart-amount")}>
                 <div className={cx("cart")}>
                     <img src={icon.cart} />
                     <span>{products.length}</span>
@@ -71,7 +71,7 @@ function MiniAddToCart() {
                 <div className={cx("total-amount")}>
                     <p>${totalPrice}</p>
                 </div>
-            </div>
+            </Link>
         </Tippy>
     );
 }

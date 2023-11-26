@@ -109,6 +109,8 @@ export const Contexts = ({ children }) => {
     const [personal, setPersonal] = useState(false);
     //setAddresses
     const [addresses, setAddresses] = useState(false);
+    //setList
+    const [lists, setLists] = useState(false);
 
     return (
         <AppContext.Provider
@@ -149,6 +151,8 @@ export const Contexts = ({ children }) => {
                 setPersonal,
                 addresses,
                 setAddresses,
+                lists,
+                setLists,
             }}
         >
             {children}

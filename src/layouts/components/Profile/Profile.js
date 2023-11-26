@@ -5,16 +5,25 @@ import PersonalInfo from "./ContentProfile/contentNav/PersonalInfo";
 import ContentProfile from "./ContentProfile/ContentProfile";
 import Addresses from "./ContentProfile/contentNav/Addresses";
 import { useAppContext } from "~/components/Context/AppContext";
+import List from "./ContentProfile/contentNav/List";
 
 function Profile() {
-    const { personal, setPersonal, addresses, setAddresses } = useAppContext();
+    const { personal, setPersonal, addresses, setAddresses, lists, setLists } =
+        useAppContext();
     const handleInfo = () => {
         setPersonal(!personal);
         setAddresses(false);
+        setLists(false);
     };
     const handleAddresses = () => {
         setAddresses(!addresses);
         setPersonal(false);
+        setLists(false);
+    };
+    const handleLists = () => {
+        setLists(!lists);
+        setPersonal(false);
+        setAddresses(false);
     };
     return (
         <div
@@ -34,6 +43,7 @@ function Profile() {
                 <NavBar
                     handleInfo={handleInfo}
                     handleAddresses={handleAddresses}
+                    handleLists={handleLists}
                 />
                 {personal === true ? (
                     <PersonalInfo
@@ -45,6 +55,8 @@ function Profile() {
                         addresses={addresses}
                         setAddresses={setAddresses}
                     />
+                ) : lists === true ? (
+                    <List lists={lists} setLists={setLists} />
                 ) : (
                     <ContentProfile
                         addresses={addresses}

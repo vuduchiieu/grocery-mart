@@ -7,7 +7,7 @@ import { userData } from "~/components/userData/userData";
 
 const cx = classNames.bind(styles);
 
-function NavBar({ handleInfo, handleAddresses }) {
+function NavBar({ handleInfo, handleAddresses, handleLists }) {
     const { setLogin, avatar, uploadAvatar, name } = useAppContext();
 
     return (
@@ -62,7 +62,7 @@ function NavBar({ handleInfo, handleAddresses }) {
                         <img src={icon.download} />
                         <p>Reorder</p>
                     </button>
-                    <button className={cx("lists")}>
+                    <button onClick={handleLists} className={cx("lists")}>
                         <img src={icon.heartNonActive} />
                         <p>Lists</p>
                     </button>

@@ -103,4 +103,51 @@
             text-decoration: underline;
         }
     }
+    .lists {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        margin-top: 20px;
+
+        .list-products {
+            width: 420px;
+            height: 380px;
+            img {
+                width: 280px;
+                height: 284px;
+            }
+            .name {
+                color: #1a162e;
+                font-size: 15px;
+                font-weight: 500;
+                line-height: 22px;
+            }
+            .price {
+                display: flex;
+                justify-content: space-between;
+                margin-top: 20px;
+                p {
+                    color: #1a162e;
+                    font-size: 22px;
+                    font-weight: 500;
+                    line-height: 32px;
+                }
+                button {
+                    height: 42px;
+                    margin-right: 40px;
+                    padding: 10px 20px;
+                    border-radius: 20px;
+                    background: #ffb700;
+                    color: #1a162e;
+                    font-size: 15px;
+                    font-weight: 700;
+                    line-height: 22px;
+                    &:hover {
+                        cursor: pointer;
+                        opacity: 0.8;
+                    }
+                }
+            }
+        }
+    }
 }

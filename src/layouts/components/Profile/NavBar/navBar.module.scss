@@ -139,6 +139,10 @@
             }
             .lists {
                 margin: 12px 0;
+                &:hover {
+                    cursor: pointer;
+                    text-decoration: underline;
+                }
             }
         }
         .subscriptions-plans {

@@ -1,9 +1,12 @@
 .wrap-header {
+    position: sticky;
+    top: 0;
     display: flex;
     align-items: center;
     width: 100vw;
     height: 110px;
     background-color: #eee;
+    z-index: 1;
 
     .header {
         display: flex;
@@ -88,6 +91,7 @@
                 display: flex;
                 align-items: center;
                 margin-right: 20px;
+                cursor: pointer;
                 img {
                     margin-right: 10px;
                 }

@@ -29,7 +29,9 @@ function TotalLavAzza1320() {
                         </button>
 
                         <div className={cx("wrap-info")}>
-                            <h3>{item.desc}</h3>
+                            <Link className={cx("desc")} to={item.to}>
+                                {item.desc}
+                            </Link>
                             <p className={cx("title")}>{item.title}</p>
                             <div className={cx("warp-price-start")}>
                                 <p>${item.prevPrice}</p>
