@@ -1,15 +1,16 @@
 import Header from "~/layouts/components/Home/Header/Header";
 import NavBar from "./NavBar/NavBar";
-import { useState } from "react";
 import PersonalInfo from "./ContentProfile/contentNav/PersonalInfo";
 import ContentProfile from "./ContentProfile/ContentProfile";
 import Addresses from "./ContentProfile/contentNav/Addresses";
 import { useAppContext } from "~/components/Context/AppContext";
 import List from "./ContentProfile/contentNav/List";
+import { useEffect, useState } from "react";
 
 function Profile() {
     const { personal, setPersonal, addresses, setAddresses, lists, setLists } =
         useAppContext();
+    const [isMounted, setIsMounted] = useState(false);
     const handleInfo = () => {
         setPersonal(!personal);
         setAddresses(false);
@@ -25,6 +26,18 @@ function Profile() {
         setPersonal(false);
         setAddresses(false);
     };
+    useEffect(() => {
+        setIsMounted(true);
+
+        return () => {
+            if (isMounted) {
+                setPersonal(false);
+                setAddresses(false);
+                setLists(false);
+            }
+        };
+    }, [isMounted]);
+
     return (
         <div
             style={{

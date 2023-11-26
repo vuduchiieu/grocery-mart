@@ -29,7 +29,7 @@ function App() {
                         <Route element={<NotFound />} />
                     )}
                     {login === true ? (
-                        <Route path="/profile" element={<Profile />} />
+                        <Route path="/profile/" element={<Profile />} />
                     ) : (
                         <Route element={<NotFound />} />
                     )}
