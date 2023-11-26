@@ -64,6 +64,8 @@ const icon = {
     check: require("./check.svg").default,
     noCheck: require("./noCheck.svg").default,
     emailIcon: require("./emailIcon.svg").default,
+    lock: require("./Lock.svg").default,
+    unlock: require("./unlock.svg").default,
 };
 
 export default icon;

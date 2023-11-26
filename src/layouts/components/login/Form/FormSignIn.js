@@ -73,9 +73,9 @@ function FormSignIn() {
                     <div className={cx("error")} style={{ height: 20 }}></div>
                     <label className={cx("password")}>
                         {showPassword === true ? (
-                            <img src="https://static.xx.fbcdn.net/rsrc.php/v3/yk/r/swFqSxKYa5M.png" />
+                            <img src={icon.unlock} />
                         ) : (
-                            <img src="https://static.xx.fbcdn.net/rsrc.php/v3/yZ/r/je5FEJkU1_K.png" />
+                            <img src={icon.lock} />
                         )}
                         <input
                             type="checkbox"
