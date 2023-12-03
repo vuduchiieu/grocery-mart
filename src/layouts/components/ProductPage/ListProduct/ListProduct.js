@@ -114,11 +114,14 @@ function ListProduct({ productData }) {
                             </div>
                             <div className={cx("add-to-cart")}>
                                 <button
+                                    className={cx("add")}
                                     onClick={() => updateCartItem(productData)}
                                 >
                                     Add to cart
                                 </button>
-                                <img src={productData.reaction} />
+                                <button className={cx("reaction")}>
+                                    <img src={productData.reaction} />
+                                </button>
                             </div>
                         </div>
                     </div>

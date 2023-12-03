@@ -172,11 +172,11 @@
                         }
                     }
                     .add-to-cart {
+                        position: relative;
+                        display: flex;
                         width: 243px;
                         height: 46px;
-                        display: flex;
-                        position: relative;
-                        button {
+                        .add {
                             margin-top: 20px;
                             width: 213px;
                             height: 46px;
@@ -184,18 +184,27 @@
                             border-radius: 6px;
                             font-weight: 700;
                             background: #ffb700;
-                            z-index: 1;
                             &:hover {
                                 cursor: pointer;
                                 opacity: 0.8;
                             }
                         }
-                        img {
+                        .reaction {
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            overflow: hidden;
                             position: absolute;
-                            top: -29px;
-                            right: -98px;
-                            width: 180px;
-                            height: 180px;
+                            bottom: -20px;
+                            right: -30px;
+                            width: 50px;
+                            height: 50px;
+                            border-radius: 50%;
+                            box-shadow: 0px 20px 60px rgba(124, 124, 124, 0.2);
+
+                            img {
+                                object-position: 0px 20px;
+                            }
                         }
                     }
                 }
