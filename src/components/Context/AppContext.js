@@ -10,7 +10,6 @@ export const Contexts = ({ children }) => {
     const [listHeart, setListHeart] = useState(
         JSON.parse(localStorage.getItem("likedItems")) || []
     );
-
     // statusHeart
     const handleReactionClick = (i) => {
         if (login === true) {
