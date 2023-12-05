@@ -30,7 +30,7 @@ function Header() {
             <div className={cx("header")}>
                 <Link to={"/"} className={cx("logo")}>
                     <img src={icon.logo} />
-                    <h1>grocerymart</h1>
+                    <h1>siêuTạpHóa</h1>
                 </Link>
                 <div
                     className={cx("nav-bar")}
