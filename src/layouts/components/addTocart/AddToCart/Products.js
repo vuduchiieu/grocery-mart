@@ -11,7 +11,7 @@ function Products() {
         updateCartItem,
         uniqueProducts,
         productQuantities,
-        removeAllCartItem,
+        clearCartItem,
     } = useAppContext();
 
     return (
@@ -58,7 +58,7 @@ function Products() {
                                     <img src={icon.delete} />
                                     <button
                                         onClick={() => {
-                                            removeAllCartItem(item);
+                                            clearCartItem(item);
                                         }}
                                     >
                                         <p> Delete</p>

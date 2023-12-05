@@ -61,6 +61,17 @@ export const Contexts = ({ children }) => {
         }
     };
 
+    //clearCartItem
+    const clearCartItem = (item) => {
+        const updatedCartItems = [...products];
+        let indexToRemove;
+        while ((indexToRemove = products.indexOf(item)) !== -1) {
+            products.splice(indexToRemove, 1);
+        }
+        setCartItem(updatedCartItems);
+        localStorage.setItem("products", JSON.stringify(products));
+    };
+
     //uniqueProducts
     const uniqueProducts = Array.from(
         new Set(products.map((item) => item.productName))
@@ -78,8 +89,6 @@ export const Contexts = ({ children }) => {
         }
     });
 
-    //removeAllCartItem
-    const removeAllCartItem = (item) => {};
     //set avatar
     let [avatar, setAvatar] = useState();
     useEffect(() => {
@@ -94,6 +103,7 @@ export const Contexts = ({ children }) => {
         }
         setAvatar(processingImg);
     };
+
     //email & passWord
     const [email, setEmail] = useState();
     const [passWord, setpassWord] = useState();
@@ -128,7 +138,7 @@ export const Contexts = ({ children }) => {
                 uploadAvatar,
                 setCartItem,
                 removeCartItem,
-                removeAllCartItem,
+                clearCartItem,
                 uniqueProducts,
                 productQuantities,
                 email,
