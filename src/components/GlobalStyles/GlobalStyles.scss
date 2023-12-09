@@ -3,6 +3,14 @@
     padding: 0;
     box-sizing: border-box;
 }
+:root {
+    --primari-color: linear-gradient(
+            0deg,
+            rgba(255, 255, 255, 0.3) 0%,
+            rgba(255, 255, 255, 0.3) 100%
+        ),
+        #ffb700;
+}
 
 @font-face {
     font-family: "Gordita";

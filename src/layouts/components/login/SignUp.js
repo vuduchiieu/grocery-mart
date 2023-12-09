@@ -22,7 +22,7 @@ function SignUp() {
                 <div className={cx("wrap")}>
                     <Link to={"/"} className={cx("logo")}>
                         <img src={icon.logo} />
-                        <h1>siêuTạpHóa</h1>
+                        <h1>siêuTapHóa</h1>
                     </Link>
                     <div className={cx("title")}>
                         <h3>Sign Up</h3>
