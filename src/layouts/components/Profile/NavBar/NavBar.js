@@ -2,13 +2,29 @@ import classNames from "classnames/bind";
 import styles from "./navBar.module.scss";
 import img from "~/assets/img";
 import icon from "~/assets/icon";
-import { useAppContext } from "~/components/Context/AppContext";
+import { AppContext, useAppContext } from "~/components/Context/AppContext";
 import { userData } from "~/components/userData/userData";
+import { useContext, useEffect, useState } from "react";
+import axios from "axios";
 
 const cx = classNames.bind(styles);
 
 function NavBar({ handleInfo, handleAddresses, handleLists }) {
-    const { setLogin, avatar, uploadAvatar, name } = useAppContext();
+    const { idApi, setLogin, avatar, uploadAvatar } = useContext(AppContext);
+
+    const [users, setUsers] = useState([]);
+    useEffect(() => {
+        if (idApi) {
+            axios
+                .get(`https://be-jyl9.onrender.com/api/v1/user/${idApi}`)
+                .then((response) => {
+                    setUsers(response.data.data);
+                })
+                .catch((error) =>
+                    console.error("Lỗi khi lấy dữ liệu người dùng:", error)
+                );
+        }
+    }, [idApi]);
 
     return (
         <div className={cx("nav-bar")}>
@@ -28,7 +44,12 @@ function NavBar({ handleInfo, handleAddresses, handleLists }) {
                             <img src={avatar.review} />
                         )}
                     </label>
-                    <p className={cx("name")}> {name || userData.name}</p>
+                    {users.map((item, i) => (
+                        <p key={i} className={cx("name")}>
+                            {item.fullName}
+                        </p>
+                    ))}
+
                     <p className={cx("registered")}>
                         Registered: 10th Nov 2023
                     </p>

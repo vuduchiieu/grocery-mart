@@ -103,12 +103,6 @@ export const Contexts = ({ children }) => {
         setAvatar(processingImg);
     };
 
-    //email & passWord
-    const [email, setEmail] = useState();
-    const [passWord, setpassWord] = useState();
-    //UserName && phone
-    const [name, setName] = useState();
-    const [phone, setPhone] = useState();
     //adress
     const [detailed, setDetailed] = useState();
     const [town, setTown] = useState();
@@ -120,6 +114,9 @@ export const Contexts = ({ children }) => {
     const [addresses, setAddresses] = useState(false);
     //setList
     const [lists, setLists] = useState(false);
+
+    //setid
+    const [idApi, setIdApi] = useState(localStorage.getItem("idApi") || "");
 
     return (
         <AppContext.Provider
@@ -140,14 +137,6 @@ export const Contexts = ({ children }) => {
                 clearCartItem,
                 uniqueProducts,
                 productQuantities,
-                email,
-                setEmail,
-                passWord,
-                setpassWord,
-                name,
-                setName,
-                phone,
-                setPhone,
                 detailed,
                 setDetailed,
                 town,
@@ -162,6 +151,8 @@ export const Contexts = ({ children }) => {
                 setAddresses,
                 lists,
                 setLists,
+                idApi,
+                setIdApi,
             }}
         >
             {children}

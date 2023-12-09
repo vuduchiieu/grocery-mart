@@ -1,19 +1,14 @@
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { Link, useNavigate } from "react-router-dom";
-import * as yup from "yup";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 import classNames from "classnames/bind";
 import styles from "./formLogin.module.scss";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import icon from "~/assets/icon";
-import { AppContext } from "~/components/Context/AppContext";
 
 const cx = classNames.bind(styles);
 
 function FormSignUp() {
-    const [users, setUsers] = useState([]);
     const [newUser, setNewUser] = useState({
         fullName: "",
         email: "",
@@ -21,11 +16,8 @@ function FormSignUp() {
         passWord: "",
         cfPassWord: "",
     });
-
-    const { setLogin, setEmail, setpassWord } = useContext(AppContext);
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-    const [check, setCheck] = useState(false);
 
     const navigate = useNavigate();
 
@@ -36,46 +28,30 @@ function FormSignUp() {
         setShowConfirmPassword(!showConfirmPassword);
     };
 
-    const toggleCheck = () => {
-        setCheck(!check);
-    };
-    useEffect(() => {
-        axios
-            .get("https://be-jyl9.onrender.com/api/v1/users")
-            .then((response) => setUsers(response.data.data))
-            .catch((error) => console.error("Error fetching users:", error));
-    }, []);
-    const handleCreateUser = () => {
-        axios
-            .post("https://be-jyl9.onrender.com/api/v1/create", newUser)
-            .then(() => {
-                axios
-                    .get("https://be-jyl9.onrender.com/api/v1/users")
-                    .then((response) => console.log(response.data))
-                    .catch((error) =>
-                        console.error("Error fetching users:", error)
-                    );
-                setEmail(newUser.email);
-                setpassWord(newUser.passWord);
-                localStorage.setItem("login", "true");
-                setLogin(true);
-                navigate("/");
-                setNewUser({
-                    fullName: "",
-                    email: "",
-                    phoneNumber: "",
-                    passWord: "",
-                    cfPassWord: "",
-                });
-            })
-            .catch((error) => console.error("Error creating user:", error));
+    const handleCreateUser = async () => {
+        try {
+            await axios.post(
+                "https://be-jyl9.onrender.com/api/v1/create",
+                newUser
+            );
+            navigate("/signin");
+            setNewUser({
+                fullName: "",
+                email: "",
+                phoneNumber: "",
+                passWord: "",
+                cfPassWord: "",
+            });
+        } catch (error) {
+            console.error("Error creating user:", error);
+        }
     };
 
     return (
         <div className={cx("sign-up")}>
             <div className={cx("form")}>
                 <input
-                    type="text"
+                    type="email"
                     placeholder="Email"
                     value={newUser.email}
                     onChange={(e) =>
@@ -137,7 +113,7 @@ function FormSignUp() {
                 />
                 <input
                     className={cx("phone-number")}
-                    type="text"
+                    type="number"
                     placeholder="Phone Number"
                     value={newUser.phoneNumber}
                     onChange={(e) =>

@@ -1,5 +1,4 @@
 import { useContext, useState } from "react";
-import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { AppContext } from "~/components/Context/AppContext";
 import icon from "~/assets/icon";
@@ -10,14 +9,12 @@ import axios from "axios";
 const cx = classNames.bind(styles);
 
 function FormSignIn() {
-    const { setLogin, setUserID } = useContext(AppContext);
+    const { setLogin, setIdApi } = useContext(AppContext);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [check, setCheck] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
     const navigate = useNavigate();
-
-    const { handleSubmit } = useForm();
 
     const toggleShowPassword = () => {
         setShowPassword(!showPassword);
@@ -25,21 +22,22 @@ function FormSignIn() {
     const toggleCheck = () => {
         setCheck(!check);
     };
-
-    const onSubmit = async (data) => {
+    const handleLogin = async () => {
         try {
             const response = await axios.get(
                 "https://be-jyl9.onrender.com/api/v1/users"
             );
             const apiData = response.data.data;
+
             const foundUser = apiData.find(
                 (user) => user.email === email && user.passWord === password
             );
 
             if (foundUser) {
+                localStorage.setItem("idApi", foundUser.id);
                 localStorage.setItem("login", "true");
+                setIdApi(foundUser.id);
                 setLogin(true);
-                setUserID(foundUser.id);
                 navigate("/");
             } else {
                 alert("Login information is incorrect");
@@ -52,7 +50,7 @@ function FormSignIn() {
 
     return (
         <div className={cx("login")}>
-            <form onSubmit={handleSubmit(onSubmit)} className={cx("form")}>
+            <div className={cx("form")}>
                 <div>
                     <input
                         required
@@ -114,10 +112,10 @@ function FormSignIn() {
                         </Link>
                     </div>
                 </div>
-                <button className={cx("button")}>
+                <button onClick={handleLogin} className={cx("button")}>
                     <p>Login</p>
                 </button>
-            </form>
+            </div>
             <button className={cx("loginWithGG")}>
                 <img src={icon.google} alt="" />
                 <p>Sign in with Gmail</p>
