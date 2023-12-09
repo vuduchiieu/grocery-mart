@@ -5,11 +5,12 @@ import { AppContext } from "~/components/Context/AppContext";
 import icon from "~/assets/icon";
 import classNames from "classnames/bind";
 import styles from "./formLogin.module.scss";
+import axios from "axios";
 
 const cx = classNames.bind(styles);
 
 function FormSignIn() {
-    const { setLogin } = useContext(AppContext);
+    const { setLogin, setUserID } = useContext(AppContext);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [check, setCheck] = useState(false);
@@ -24,33 +25,34 @@ function FormSignIn() {
     const toggleCheck = () => {
         setCheck(!check);
     };
-    console.log(password);
 
-    const onSubmit = (data) => {
-        const storedUserData = localStorage.getItem("userData");
-        const userData = JSON.parse(storedUserData);
-
-        if (Array.isArray(userData) && userData.length > 0) {
-            const foundUser = userData.find(
-                (user) => user.email === email && user.password === password
+    const onSubmit = async (data) => {
+        try {
+            const response = await axios.get(
+                "https://be-jyl9.onrender.com/api/v1/users"
+            );
+            const apiData = response.data.data;
+            const foundUser = apiData.find(
+                (user) => user.email === email && user.passWord === password
             );
 
             if (foundUser) {
                 localStorage.setItem("login", "true");
                 setLogin(true);
+                setUserID(foundUser.id);
                 navigate("/");
             } else {
                 alert("Login information is incorrect");
                 setLogin(false);
             }
-        } else {
-            setLogin(false);
+        } catch (error) {
+            console.error("Error fetching data from API:", error.message);
         }
     };
 
     return (
         <div className={cx("login")}>
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <form onSubmit={handleSubmit(onSubmit)} className={cx("form")}>
                 <div>
                     <input
                         required
