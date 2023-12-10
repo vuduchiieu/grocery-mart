@@ -28,7 +28,80 @@ function FormSignUp() {
         setShowConfirmPassword(!showConfirmPassword);
     };
 
+    const [errEmail, setErrEmail] = useState("");
+    const [errPassWord, setErrPassWord] = useState("");
+    const [errCfPassWord, setErrCfPassWord] = useState("");
+    const [errFullName, setErrFullName] = useState("");
+    const [errPhoneNumber, setPhoneNumber] = useState("");
+
+    const isValidEmail = (email) => {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    };
+    const isValidPassword = (password) => {
+        const passwordRegex = /^(?=.*[A-Z])(?=.*\d).{8,}$/;
+        return passwordRegex.test(password);
+    };
+
+    const [existingUsers, setExistingUsers] = useState([]);
+
+    const fetchExistingUsers = async () => {
+        try {
+            const response = await axios.get(
+                "https://be-jyl9.onrender.com/api/v1/users"
+            );
+            setExistingUsers(response.data.data);
+        } catch (error) {
+            console.error("Error fetching existing users:", error);
+        }
+    };
+
+    useEffect(() => {
+        fetchExistingUsers();
+    }, []);
+
     const handleCreateUser = async () => {
+        if (!existingUsers || existingUsers.length === 0) {
+            await fetchExistingUsers();
+        }
+        const isEmailExist =
+            existingUsers &&
+            existingUsers.some((user) => user.email === newUser.email);
+
+        if (isEmailExist) {
+            alert("This email has been registered, please log in");
+            navigate("/signin");
+            return;
+        }
+
+        if (!isValidEmail(newUser.email)) {
+            setErrEmail("Invalid email");
+            return;
+        }
+
+        if (!isValidPassword(newUser.passWord)) {
+            setErrPassWord(
+                "Password must contain at least one number and one capital letter"
+            );
+            return;
+        }
+
+        if (newUser.passWord !== newUser.cfPassWord) {
+            setErrCfPassWord("Password must match");
+            return;
+        }
+        if (!newUser.fullName.trim()) {
+            setErrFullName("Invalid name");
+            return;
+        }
+
+        if (
+            !newUser.phoneNumber.trim() ||
+            newUser.phoneNumber.trim().length < 9
+        ) {
+            setPhoneNumber("Phone number is at least 9 digits");
+            return;
+        }
         try {
             await axios.post(
                 "https://be-jyl9.onrender.com/api/v1/create",
@@ -59,7 +132,9 @@ function FormSignUp() {
                     }
                 />
                 <img className={cx("icon-email")} src={icon.emailIcon} alt="" />
-                <div className={cx("error")}></div>
+                <div className={cx("error")}>
+                    <p>{errEmail}</p>
+                </div>
                 <input
                     type={showPassword ? "text" : "password"}
                     placeholder="Password"
@@ -80,7 +155,9 @@ function FormSignUp() {
                         onChange={toggleShowPassword}
                     />
                 </label>
-                <div className={cx("error")}></div>
+                <div className={cx("error")}>
+                    <p>{errPassWord}</p>
+                </div>
                 <input
                     type={showConfirmPassword ? "text" : "password"}
                     placeholder="Confirm Password"
@@ -101,7 +178,9 @@ function FormSignUp() {
                         onChange={toggleShowConfirmPassword}
                     />
                 </label>
-                <div className={cx("error")}></div>
+                <div className={cx("error")}>
+                    <p>{errCfPassWord}</p>
+                </div>
                 <input
                     className={cx("full-name")}
                     type="text"
@@ -120,6 +199,17 @@ function FormSignUp() {
                         setNewUser({ ...newUser, phoneNumber: e.target.value })
                     }
                 />
+                <div
+                    className={cx("error")}
+                    style={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                        height: 20,
+                    }}
+                >
+                    <p>{errFullName}</p>
+                    <p>{errPhoneNumber}</p>
+                </div>
 
                 <button className={cx("button")} onClick={handleCreateUser}>
                     <p>Sign Up</p>
