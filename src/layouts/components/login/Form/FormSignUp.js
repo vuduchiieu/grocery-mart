@@ -95,10 +95,7 @@ function FormSignUp() {
             return;
         }
 
-        if (
-            !newUser.phoneNumber.trim() ||
-            newUser.phoneNumber.trim().length < 9
-        ) {
+        if (newUser.phoneNumber.trim().length < 9) {
             setPhoneNumber("Phone number is at least 9 digits");
             return;
         }
