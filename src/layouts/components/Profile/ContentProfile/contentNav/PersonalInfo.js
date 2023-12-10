@@ -41,15 +41,6 @@ function PersonalInfo({ personal, setPersonal }) {
     }, [idApi]);
 
     const onSubmit = (data) => {
-        const userData = {
-            name: data.name,
-            phone: data.phone,
-        };
-        setName(userData.name);
-        setPhone(userData.phone);
-        let userProfile = [];
-        userProfile.push(userData);
-        localStorage.setItem("userProfile", JSON.stringify(userProfile));
         handleBack();
     };
 
