@@ -2,16 +2,13 @@ import classNames from "classnames/bind";
 import styles from "./contentNav.module.scss";
 import icon from "~/assets/icon";
 import { useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
 import { useAppContext } from "~/components/Context/AppContext";
 import axios from "axios";
 
 const cx = classNames.bind(styles);
 
 function PersonalInfo({ personal, setPersonal }) {
-    const { setName, setPhone, idApi } = useAppContext();
-    const { register, handleSubmit, setValue } = useForm();
-    const [showPassword, setShowPassword] = useState(false);
+    const { idApi } = useAppContext();
 
     const handleBack = () => {
         setPersonal(!personal);
@@ -20,13 +17,32 @@ function PersonalInfo({ personal, setPersonal }) {
         setShowPassword(!showPassword);
     };
 
-    const handleInputChange = (e) => {
-        if (e.target.value.length > 10) {
-            setValue("phone", e.target.value.substring(0, 10));
-        }
-    };
+    const [showPassword, setShowPassword] = useState(false);
 
     const [users, setUsers] = useState([]);
+
+    const [newUser, setNewUser] = useState({
+        fullName: "",
+        email: "",
+        phoneNumber: "",
+        passWord: "",
+        id: idApi,
+    });
+
+    const [errEmail, setErrEmail] = useState("");
+    const [errPassWord, setErrPassWord] = useState("");
+    const [errFullName, setErrFullName] = useState("");
+    const [errPhoneNumber, setPhoneNumber] = useState("");
+
+    const isValidEmail = (email) => {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    };
+    const isValidPassword = (password) => {
+        const passwordRegex = /^(?=.*[A-Z])(?=.*\d).{8,}$/;
+        return passwordRegex.test(password);
+    };
+
     useEffect(() => {
         if (idApi) {
             axios
@@ -40,8 +56,37 @@ function PersonalInfo({ personal, setPersonal }) {
         }
     }, [idApi]);
 
-    const onSubmit = (data) => {
-        handleBack();
+    const handleUpdate = async () => {
+        if (!isValidEmail(newUser.email)) {
+            setErrEmail("Invalid email");
+            return;
+        }
+
+        if (!isValidPassword(newUser.passWord)) {
+            setErrPassWord(
+                "Password must contain at least one number and one capital letter"
+            );
+            return;
+        }
+
+        if (!newUser.fullName.trim()) {
+            setErrFullName("Invalid name");
+            return;
+        }
+
+        if (newUser.phoneNumber.trim().length < 9) {
+            setPhoneNumber("Phone number is at least 9 digits");
+            return;
+        }
+        try {
+            await axios.put(
+                `https://be-jyl9.onrender.com/api/v1/update`,
+                newUser
+            );
+            handleBack();
+        } catch (error) {
+            console.error("Error updating user data:", error);
+        }
     };
 
     return (
@@ -51,11 +96,7 @@ function PersonalInfo({ personal, setPersonal }) {
                 <h3>Personal info</h3>
             </div>
             {users.map((item, i) => (
-                <form
-                    key={i}
-                    className={cx("form")}
-                    onSubmit={handleSubmit(onSubmit)}
-                >
+                <div key={i} className={cx("form")}>
                     <div className={cx("wrap")}>
                         <div className={cx("first-input")}>
                             <h4>Full name</h4>
@@ -63,8 +104,16 @@ function PersonalInfo({ personal, setPersonal }) {
                                 type="text"
                                 defaultValue={item.fullName}
                                 placeholder="Imran Khan"
-                                {...register("name")}
+                                onChange={(e) =>
+                                    setNewUser({
+                                        ...newUser,
+                                        fullName: e.target.value,
+                                    })
+                                }
                             />
+                            <div className={cx("error")}>
+                                <p>{errFullName}</p>
+                            </div>
                         </div>
                         <div className={cx("second-input")}>
                             <h4>Email address</h4>
@@ -72,17 +121,33 @@ function PersonalInfo({ personal, setPersonal }) {
                                 type="text"
                                 placeholder="Email"
                                 defaultValue={item.email}
+                                onChange={(e) =>
+                                    setNewUser({
+                                        ...newUser,
+                                        email: e.target.value,
+                                    })
+                                }
                             />
+                            <div className={cx("error")}>
+                                <p>{errEmail}</p>
+                            </div>
                         </div>
                         <div className={cx("third-input")}>
                             <h4>Phone number</h4>
                             <input
                                 type="text"
-                                defaultValue={parseInt(item.phoneNumber)}
+                                defaultValue={item.phoneNumber}
                                 placeholder="+008 01234 56789"
-                                {...register("phone")}
-                                onChange={handleInputChange}
+                                onChange={(e) =>
+                                    setNewUser({
+                                        ...newUser,
+                                        phoneNumber: e.target.value,
+                                    })
+                                }
                             />
+                            <div className={cx("error")}>
+                                <p>{errPhoneNumber}</p>
+                            </div>
                         </div>
                         <div className={cx("fourth-input")}>
                             <h4>Password</h4>
@@ -90,7 +155,16 @@ function PersonalInfo({ personal, setPersonal }) {
                                 type={showPassword ? "text" : "password"}
                                 placeholder="Password"
                                 defaultValue={item.passWord}
+                                onChange={(e) =>
+                                    setNewUser({
+                                        ...newUser,
+                                        passWord: e.target.value,
+                                    })
+                                }
                             />
+                            <div className={cx("error")}>
+                                <p>{errPassWord}</p>
+                            </div>
                             <label>
                                 {showPassword === true ? (
                                     <img src="https://static.xx.fbcdn.net/rsrc.php/v3/yk/r/swFqSxKYa5M.png" />
@@ -104,11 +178,11 @@ function PersonalInfo({ personal, setPersonal }) {
                                 />
                             </label>
                         </div>
-                        <button type="submit" className={cx("save")}>
-                            Save Edit
+                        <button onClick={handleUpdate} className={cx("save")}>
+                            Save edit
                         </button>
                     </div>
-                </form>
+                </div>
             ))}
 
             <button onClick={handleBack} className={cx("cancel")}>

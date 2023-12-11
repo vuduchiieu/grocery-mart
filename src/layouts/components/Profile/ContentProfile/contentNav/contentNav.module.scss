@@ -49,6 +49,18 @@
                     border-radius: 10px;
                     border: 1px solid #d2d1d6;
                 }
+                .error {
+                    display: flex;
+                    align-items: start;
+                    margin-left: 10px;
+                    height: 40px;
+                    p {
+                        color: #f94545;
+                        font-size: 12px;
+                        font-weight: 400;
+                        line-height: 26px;
+                    }
+                }
             }
             .third-input,
             .fourth-input {
