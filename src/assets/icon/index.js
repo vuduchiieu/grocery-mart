@@ -19,7 +19,6 @@ const icon = {
     buy: require("./Buy.svg").default,
     document: require("./Document.svg").default,
     star: require("./Star.svg").default,
-    filter: require("./Filter.svg").default,
     bakeryBread: require("./BakeryBread.svg").default,
     beverages: require("./Beverages.svg").default,
     cocktailsMixesCoffee: require("./CocktailsMixesCoffee.svg").default,

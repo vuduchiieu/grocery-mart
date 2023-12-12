@@ -13,7 +13,7 @@ function Filter() {
 
     const handleModuleFilter = () => {
         setFilter(!filter);
-        window.scrollTo(0, 450);
+        window.scrollTo(0, 999);
     };
 
     const handleClickOutside = (event) => {
@@ -37,7 +37,7 @@ function Filter() {
     }, []);
     return (
         <>
-            <div className={cx("filter")} ref={filterRef}>
+            <div className={cx("filter", { active: filter })} ref={filterRef}>
                 <button className={cx("module")} onClick={handleModuleFilter}>
                     <p>Filter</p>
                     <img src={icon.filter} />
