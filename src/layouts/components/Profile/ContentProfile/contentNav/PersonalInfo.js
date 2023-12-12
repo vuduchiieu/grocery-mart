@@ -29,6 +29,18 @@ function PersonalInfo({ personal, setPersonal }) {
         id: idApi,
     });
 
+    useEffect(() => {
+        if (users.length > 0) {
+            setNewUser(() => ({
+                ...newUser,
+                fullName: users[0].fullName,
+                email: users[0].email,
+                phoneNumber: users[0].phoneNumber,
+                passWord: users[0].passWord,
+            }));
+        }
+    }, [users]);
+
     const [errEmail, setErrEmail] = useState("");
     const [errPassWord, setErrPassWord] = useState("");
     const [errFullName, setErrFullName] = useState("");
@@ -83,7 +95,7 @@ function PersonalInfo({ personal, setPersonal }) {
                 `https://be-jyl9.onrender.com/api/v1/update`,
                 newUser
             );
-            handleBack();
+            window.location.href = "/profile";
         } catch (error) {
             console.error("Error updating user data:", error);
         }

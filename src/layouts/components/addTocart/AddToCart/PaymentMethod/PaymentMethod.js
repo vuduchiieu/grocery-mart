@@ -67,6 +67,7 @@ function PaymentMethod({ forward, handleForward, setForward }) {
 
     const handleEdit = () => {
         if (detaileds === "" || towns === "" || states === "" || dcs === "") {
+            navigate("/profile");
             setAddresses(true);
         }
     };
