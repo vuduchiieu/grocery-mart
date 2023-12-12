@@ -33,6 +33,7 @@
             .second-input,
             .third-input,
             .fourth-input {
+                position: relative;
                 width: 437px;
                 height: 102px;
                 h4 {
@@ -49,6 +50,22 @@
                     border-radius: 10px;
                     border: 1px solid #d2d1d6;
                 }
+                input[type="checkbox"] {
+                    display: none;
+                    position: absolute;
+                    bottom: 19px;
+                    right: 11px;
+                    width: 10px;
+                    height: 10px;
+                }
+
+                img {
+                    position: absolute;
+                    bottom: 19px;
+                    right: 11px;
+                    cursor: pointer;
+                }
+
                 .error {
                     display: flex;
                     align-items: start;
@@ -66,22 +83,7 @@
             .fourth-input {
                 margin-top: 30px;
             }
-            .fourth-input {
-                position: relative;
-                img {
-                    position: absolute;
-                    bottom: 19px;
-                    right: 11px;
-                }
-                input[type="checkbox"] {
-                    display: none;
-                    position: absolute;
-                    bottom: 19px;
-                    right: 11px;
-                    width: 10px;
-                    height: 10px;
-                }
-            }
+
             .save {
                 margin: 30px 0 0 780px;
                 width: 123px;

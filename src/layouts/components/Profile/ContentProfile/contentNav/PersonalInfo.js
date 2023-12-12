@@ -123,6 +123,7 @@ function PersonalInfo({ personal, setPersonal }) {
                                     })
                                 }
                             />
+                            <img src={icon.fullName} alt="" />
                             <div className={cx("error")}>
                                 <p>{errFullName}</p>
                             </div>
@@ -140,6 +141,7 @@ function PersonalInfo({ personal, setPersonal }) {
                                     })
                                 }
                             />
+                            <img src={icon.emailIcon} alt="" />
                             <div className={cx("error")}>
                                 <p>{errEmail}</p>
                             </div>
@@ -157,6 +159,7 @@ function PersonalInfo({ personal, setPersonal }) {
                                     })
                                 }
                             />
+                            <img src={icon.smartphone} alt="" />
                             <div className={cx("error")}>
                                 <p>{errPhoneNumber}</p>
                             </div>
@@ -177,11 +180,11 @@ function PersonalInfo({ personal, setPersonal }) {
                             <div className={cx("error")}>
                                 <p>{errPassWord}</p>
                             </div>
-                            <label>
+                            <label className={cx("password")}>
                                 {showPassword === true ? (
-                                    <img src="https://static.xx.fbcdn.net/rsrc.php/v3/yk/r/swFqSxKYa5M.png" />
+                                    <img src={icon.unlock} />
                                 ) : (
-                                    <img src="https://static.xx.fbcdn.net/rsrc.php/v3/yZ/r/je5FEJkU1_K.png" />
+                                    <img src={icon.lock} />
                                 )}
                                 <input
                                     type="checkbox"
