@@ -1,12 +1,27 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { TotalLavAzza, products } from "~/components/productList/productList";
+import { products } from "~/components/productList/productList";
 import icon from "~/assets/icon";
+import axios from "axios";
 
 export const AppContext = createContext();
 
 export const Contexts = ({ children }) => {
     //reaction
-    const [lavAzzaItems, setLavAzzaItems] = useState(TotalLavAzza);
+    const [lavAzzaItems, setLavAzzaItems] = useState([]);
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await axios.get(
+                    "https://be-jyl9.onrender.com/api/v2/products"
+                );
+                setLavAzzaItems(response.data.data);
+            } catch (error) {
+                console.error("Error fetching existing users:", error);
+            }
+        };
+
+        fetchData();
+    }, []);
     const [listHeart, setListHeart] = useState(
         JSON.parse(localStorage.getItem("likedItems")) || []
     );
@@ -15,9 +30,10 @@ export const Contexts = ({ children }) => {
         if (login === true) {
             const updatedLavAzzaItems = [...lavAzzaItems];
             updatedLavAzzaItems[i].reaction =
-                updatedLavAzzaItems[i].reaction === icon.heart
+                updatedLavAzzaItems[i].reaction ===
+                "https://drive.google.com/uc?export=view&id=1FM8exHhXIhPholrLDGq49RDVJgUL8c67"
                     ? icon.heartActive
-                    : icon.heart;
+                    : "https://drive.google.com/uc?export=view&id=1FM8exHhXIhPholrLDGq49RDVJgUL8c67";
             setLavAzzaItems(updatedLavAzzaItems);
             const likedItems = updatedLavAzzaItems.filter(
                 (item) => item.reaction === icon.heartActive

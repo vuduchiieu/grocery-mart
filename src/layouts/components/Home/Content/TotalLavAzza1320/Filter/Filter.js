@@ -16,15 +16,15 @@ function Filter() {
         window.scrollTo(0, 999);
     };
 
-    const handleClickOutside = (event) => {
-        if (filterRef.current && !filterRef.current.contains(event.target)) {
+    const handleClickOutside = (e) => {
+        if (filterRef.current && !filterRef.current.contains(e.target)) {
             setFilter(false);
         }
     };
 
     useEffect(() => {
-        const handleKeyPress = (event) => {
-            if (event.key === "Escape") {
+        const handleKeyPress = (e) => {
+            if (e.key === "Escape") {
                 setFilter(false);
             }
         };

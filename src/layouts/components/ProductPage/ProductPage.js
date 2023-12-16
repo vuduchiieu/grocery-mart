@@ -3,16 +3,18 @@ import ReviewProduct from "./ReviewProduct/ReviewProduct";
 import ListProduct from "./ListProduct/ListProduct";
 import Linkto from "./Linkto/Linkto";
 import { useParams } from "react-router-dom";
-import { TotalLavAzza } from "~/components/productList/productList";
 import NotFound from "~/components/NotFound/NotFound";
+import { useAppContext } from "~/components/Context/AppContext";
 
 function ProductPage() {
+    const { lavAzzaItems } = useAppContext();
+
     const { productId } = useParams();
     const productData =
-        (productId === "coffeeBeans" && TotalLavAzza[0]) ||
-        (productId === "lavazzaCoffeeBlends" && TotalLavAzza[1]) ||
-        (productId === "lavazzaCaffèEspresso" && TotalLavAzza[2]) ||
-        (productId === "qualitàOro" && TotalLavAzza[3]);
+        (productId === "coffeeBeans" && lavAzzaItems[0]) ||
+        (productId === "lavazzaCoffeeBlends" && lavAzzaItems[1]) ||
+        (productId === "lavazzaCaffèEspresso" && lavAzzaItems[2]) ||
+        (productId === "qualitàOro" && lavAzzaItems[3]);
     if (!productData) {
         return (
             <>
