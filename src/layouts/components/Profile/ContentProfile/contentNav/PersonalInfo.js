@@ -58,7 +58,7 @@ function PersonalInfo({ personal, setPersonal }) {
     useEffect(() => {
         if (idApi) {
             axios
-                .get(`https://be-jyl9.onrender.com/api/v1/user/${idApi}`)
+                .get(`https://be-sieutaphoa.vercel.app/api/v1/user/${idApi}`)
                 .then((response) => {
                     setUsers(response.data.data);
                 })
@@ -92,7 +92,7 @@ function PersonalInfo({ personal, setPersonal }) {
         }
         try {
             await axios.put(
-                `https://be-jyl9.onrender.com/api/v1/update`,
+                `https://be-sieutaphoa.vercel.app/api/v1/update`,
                 newUser
             );
             window.location.href = "/profile";

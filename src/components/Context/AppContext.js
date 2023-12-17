@@ -12,14 +12,13 @@ export const Contexts = ({ children }) => {
         const fetchData = async () => {
             try {
                 const response = await axios.get(
-                    "https://be-jyl9.onrender.com/api/v2/products"
+                    "https://be-sieutaphoa.vercel.app/api/v2/products"
                 );
                 setLavAzzaItems(response.data.data);
             } catch (error) {
                 console.error("Error fetching existing users:", error);
             }
         };
-
         fetchData();
     }, []);
     const [listHeart, setListHeart] = useState(

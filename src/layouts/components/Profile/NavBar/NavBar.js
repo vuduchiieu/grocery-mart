@@ -16,7 +16,7 @@ function NavBar({ handleInfo, handleAddresses, handleLists }) {
     useEffect(() => {
         if (idApi) {
             axios
-                .get(`https://be-jyl9.onrender.com/api/v1/user/${idApi}`)
+                .get(`https://be-sieutaphoa.vercel.app/api/v1/user/${idApi}`)
                 .then((response) => {
                     setUsers(response.data.data);
                 })

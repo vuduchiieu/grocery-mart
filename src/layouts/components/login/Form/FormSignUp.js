@@ -48,7 +48,7 @@ function FormSignUp() {
     const fetchExistingUsers = async () => {
         try {
             const response = await axios.get(
-                "https://be-jyl9.onrender.com/api/v1/users"
+                "https://be-sieutaphoa.vercel.app/api/v1/users"
             );
             setExistingUsers(response.data.data);
         } catch (error) {
@@ -101,7 +101,7 @@ function FormSignUp() {
         }
         try {
             await axios.post(
-                "https://be-jyl9.onrender.com/api/v1/create",
+                "https://be-sieutaphoa.vercel.app/api/v1/create",
                 newUser
             );
             navigate("/signin");
