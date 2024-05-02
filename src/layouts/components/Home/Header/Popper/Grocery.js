@@ -6,38 +6,39 @@ import AllGrocery from "./AllGrocery/AllGrocery";
 const cx = classNames.bind(styles);
 
 function Grocery() {
-    return (
-        <Tippy
-            interactive
-            placement="bottom"
-            render={(attrs) => (
-                <div
-                    className={cx("popper")}
-                    style={{ right: "-796px " }}
-                    tabIndex="-1"
-                    {...attrs}
-                >
-                    <img
-                        className={cx("arrow")}
-                        style={{ left: "465px" }}
-                        src={icon.polygon}
-                    />
-                    <div className={cx("wrap-list-popper")}>
-                        <div className={cx("list-popper")}>
-                            <div className={cx("children-popper")}>
-                                <AllGrocery />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            )}
+  return (
+    <Tippy
+      interactive
+      placement="bottom"
+      render={(attrs) => (
+        <div
+          className={cx("popper")}
+          style={{ right: "-796px " }}
+          tabIndex="-1"
+          {...attrs}
         >
-            <button>
-                Grocery
-                <img src={icon.arrowDown} />
-            </button>
-        </Tippy>
-    );
+          <img
+            className={cx("arrow")}
+            style={{ left: "465px" }}
+            src={icon.polygon}
+            alt=""
+          />
+          <div className={cx("wrap-list-popper")}>
+            <div className={cx("list-popper")}>
+              <div className={cx("children-popper")}>
+                <AllGrocery />
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+    >
+      <button>
+        Grocery
+        <img src={icon.arrowDown} alt="" />
+      </button>
+    </Tippy>
+  );
 }
 
 export default Grocery;

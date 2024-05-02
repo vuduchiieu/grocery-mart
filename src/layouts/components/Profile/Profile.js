@@ -8,79 +8,72 @@ import List from "./ContentProfile/contentNav/List";
 import { useEffect, useState } from "react";
 
 function Profile() {
-    const { personal, setPersonal, addresses, setAddresses, lists, setLists } =
-        useAppContext();
-    const [isMounted, setIsMounted] = useState(false);
-    const handleInfo = () => {
-        setPersonal(!personal);
+  const { personal, setPersonal, addresses, setAddresses, lists, setLists } =
+    useAppContext();
+  const [isMounted, setIsMounted] = useState(false);
+  const handleInfo = () => {
+    setPersonal(!personal);
+    setAddresses(false);
+    setLists(false);
+  };
+  const handleAddresses = () => {
+    setAddresses(!addresses);
+    setPersonal(false);
+    setLists(false);
+  };
+  const handleLists = () => {
+    setLists(!lists);
+    setPersonal(false);
+    setAddresses(false);
+  };
+  useEffect(() => {
+    setIsMounted(true);
+    return () => {
+      if (isMounted) {
+        setPersonal(false);
         setAddresses(false);
         setLists(false);
+      }
     };
-    const handleAddresses = () => {
-        setAddresses(!addresses);
-        setPersonal(false);
-        setLists(false);
-    };
-    const handleLists = () => {
-        setLists(!lists);
-        setPersonal(false);
-        setAddresses(false);
-    };
-    useEffect(() => {
-        setIsMounted(true);
+  }, [isMounted, setAddresses, setLists, setPersonal]);
 
-        return () => {
-            if (isMounted) {
-                setPersonal(false);
-                setAddresses(false);
-                setLists(false);
-            }
-        };
-    }, [isMounted]);
-
-    return (
-        <div
-            style={{
-                backgroundColor: "#F6F6F6",
-            }}
-        >
-            <Header />
-            <div
-                style={{
-                    display: "flex",
-                    margin: "30px auto 0",
-                    height: 942,
-                    width: 1340,
-                }}
-            >
-                <NavBar
-                    handleInfo={handleInfo}
-                    handleAddresses={handleAddresses}
-                    handleLists={handleLists}
-                />
-                {personal === true ? (
-                    <PersonalInfo
-                        personal={personal}
-                        setPersonal={setPersonal}
-                    />
-                ) : addresses === true ? (
-                    <Addresses
-                        addresses={addresses}
-                        setAddresses={setAddresses}
-                    />
-                ) : lists === true ? (
-                    <List lists={lists} setLists={setLists} />
-                ) : (
-                    <ContentProfile
-                        addresses={addresses}
-                        setAddresses={setAddresses}
-                        personal={personal}
-                        setPersonal={setPersonal}
-                    />
-                )}
-            </div>
-        </div>
-    );
+  return (
+    <div
+      style={{
+        backgroundColor: "#F6F6F6",
+      }}
+    >
+      <Header />
+      <div
+        style={{
+          display: "flex",
+          margin: "30px auto 0",
+          height: 942,
+          width: 1340,
+        }}
+      >
+        <NavBar
+          handleInfo={handleInfo}
+          handleAddresses={handleAddresses}
+          handleLists={handleLists}
+        />
+        {personal === true ? (
+          <PersonalInfo personal={personal} setPersonal={setPersonal} />
+        ) : addresses === true ? (
+          <Addresses addresses={addresses} setAddresses={setAddresses} />
+        ) : lists === true ? (
+          <List lists={lists} setLists={setLists} />
+        ) : (
+          <ContentProfile
+            addresses={addresses}
+            setAddresses={setAddresses}
+            personal={personal}
+            setPersonal={setPersonal}
+          />
+        )}
+      </div>
+    </div>
+  );
 }
 
 export default Profile;

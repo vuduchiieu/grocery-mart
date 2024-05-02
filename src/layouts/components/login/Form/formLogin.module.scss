@@ -1,151 +1,144 @@
-.sign-up {
-    width: 460px;
-    height: 424px;
-}
-.login {
-    width: 460px;
-    height: 354px;
-}
-
 .sign-up,
 .login {
-    .form {
-        position: relative;
-
-        input {
-            width: 460px;
-            padding: 12px 170px 12px 12px;
-            border-radius: 10px;
-            border: 1px solid #d2d1d6;
-        }
-        .full-name,
-        .phone-number {
-            display: inline-block;
-            padding: 12px 85px 12px 12px;
-            width: 230px;
-        }
-
-        .icon-email {
-            position: absolute;
-            top: 10px;
-            right: 9px;
-        }
-
-        .error {
-            display: flex;
-            align-items: start;
-            margin-left: 10px;
-            height: 40px;
-            p {
-                color: #f94545;
-                font-size: 12px;
-                font-weight: 400;
-                line-height: 26px;
-            }
-        }
-
-        ::placeholder {
-            padding-left: 12px;
-            color: #d2d1d6;
-            font-size: 18px;
-            font-weight: 400;
-            line-height: 26px;
-        }
-        .password {
-            position: absolute;
-            top: 90px;
-            right: 12px;
-            cursor: pointer;
-            input {
-                display: none;
-            }
-        }
-
-        .confirm-password {
-            position: absolute;
-            top: 170px;
-            right: 12px;
-            cursor: pointer;
-            input {
-                display: none;
-            }
-        }
-        .recovery {
-            display: flex;
-            justify-content: space-between;
-            width: 460px;
-            height: 24px;
-            label {
-                display: flex;
-                align-items: center;
-                width: 175px;
-                cursor: pointer;
-                p {
-                    margin-left: 10px;
-                    color: #9e9da8;
-                    font-size: 15px;
-                    font-weight: 500;
-                    line-height: 22px;
-                }
-                img {
-                    color: #fff;
-                }
-                input {
-                    display: none;
-                }
-            }
-            .recovery-password {
-                color: #0071dc;
-                background-color: #fff;
-                font-size: 15px;
-                font-style: normal;
-                font-weight: 500;
-                line-height: 22px;
-                &:hover {
-                    opacity: 0.8;
-                    cursor: pointer;
-                }
-            }
-        }
-        .button {
-            margin-top: 50px;
-            width: 460px;
-            height: 50px;
-            border-radius: 10px;
-            background: var(--primari-color);
-            p {
-                color: #1a162e;
-                font-size: 18px;
-                font-weight: 700;
-                line-height: 26px;
-            }
-
-            &:hover {
-                cursor: pointer;
-                opacity: 0.8;
-            }
-        }
+  .form {
+    position: relative;
+    input {
+      width: 460px;
+      padding: 12px 170px 12px 12px;
+      border-radius: 10px;
+      border: 1px solid #d2d1d6;
     }
-    .loginWithGG {
+    .full-name,
+    .phone-number {
+      display: inline-block;
+      padding: 12px 85px 12px 12px;
+      width: 230px;
+    }
+    .icon-email {
+      position: absolute;
+      top: 10px;
+      right: 9px;
+    }
+    .error {
+      display: flex;
+      align-items: flex-start;
+      margin-left: 10px;
+      height: 40px;
+      p {
+        color: #f94545;
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 26px;
+      }
+    }
+    ::placeholder {
+      padding-left: 12px;
+      color: #d2d1d6;
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 26px;
+    }
+    .password {
+      position: absolute;
+      top: 170px;
+      right: 12px;
+      cursor: pointer;
+      input {
+        display: none;
+      }
+    }
+    .recovery {
+      display: flex;
+      justify-content: space-between;
+      width: 460px;
+      height: 24px;
+      label {
         display: flex;
         align-items: center;
-        justify-content: center;
-        margin-top: 30px;
-        width: 460px;
-        height: 50px;
-        border-radius: 10px;
-        border: 1px solid #d2d1d6;
-        background-color: #fff;
-        &:hover {
-            cursor: pointer;
-            opacity: 0.8;
-        }
+        width: 175px;
+        cursor: pointer;
         p {
-            margin-left: 10px;
-            color: #1a162e;
-            font-size: 18px;
-            font-weight: 500;
-            line-height: 26px;
+          margin-left: 10px;
+          color: #9e9da8;
+          font-size: 15px;
+          font-weight: 500;
+          line-height: 22px;
         }
+        img {
+          color: #fff;
+        }
+        input {
+          display: none;
+        }
+      }
+      .recovery-password {
+        color: #0071dc;
+        background-color: #fff;
+        font-size: 15px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 22px;
+        &:hover {
+          opacity: 0.8;
+          cursor: pointer;
+        }
+      }
     }
+    .button {
+      width: 460px;
+      height: 50px;
+      border-radius: 10px;
+      background: var(--primari-color);
+      p {
+        color: #1a162e;
+        font-size: 18px;
+        font-weight: 700;
+        line-height: 26px;
+      }
+
+      &:hover {
+        cursor: pointer;
+        opacity: 0.8;
+      }
+    }
+  }
+  .loginWithGG {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+    width: 460px;
+    height: 50px;
+    border-radius: 10px;
+    border: 1px solid #d2d1d6;
+    background-color: #fff;
+    &:hover {
+      cursor: pointer;
+      opacity: 0.8;
+    }
+    p {
+      margin-left: 10px;
+      color: #1a162e;
+      font-size: 18px;
+      font-weight: 500;
+      line-height: 26px;
+    }
+  }
+}
+
+.sign-up {
+  width: 460px;
+  height: 424px;
+}
+.login {
+  width: 460px;
+  height: 354px;
+  .form {
+    .password {
+      top: 90px;
+    }
+    .button {
+      margin-top: 50px;
+    }
+  }
 }

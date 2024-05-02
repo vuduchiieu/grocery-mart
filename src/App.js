@@ -11,35 +11,32 @@ import { SignIn, SignUp } from "./layouts/components/login";
 import { useAppContext } from "./components/Context/AppContext";
 
 function App() {
-    const { login } = useAppContext();
-    return (
-        <Router>
-            <div className="App">
-                <Routes>
-                    <Route path="/signin" element={<SignIn />} />
-                    <Route path="/signup" element={<SignUp />} />
-                    <Route path="/" element={<Home />} />
-                    <Route
-                        path="/product/:productId"
-                        element={<ProductPage />}
-                    ></Route>
-                    {login === true ? (
-                        <Route path="/addtocart/" element={<AddToCart />} />
-                    ) : (
-                        <Route element={<NotFound />} />
-                    )}
-                    {login === true ? (
-                        <Route path="/profile/" element={<Profile />} />
-                    ) : (
-                        <Route element={<NotFound />} />
-                    )}
+  const { user } = useAppContext();
+  return (
+    <Router>
+      <div className="App">
+        <Routes>
+          <Route path="/signin" element={<SignIn />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/product/:productId" element={<ProductPage />}></Route>
+          {!!user ? (
+            <Route path="/addtocart/" element={<AddToCart />} />
+          ) : (
+            <Route element={<NotFound />} />
+          )}
+          {!!user ? (
+            <Route path="/profile/" element={<Profile />} />
+          ) : (
+            <Route element={<NotFound />} />
+          )}
 
-                    <Route path="*" element={<NotFound />} />
-                </Routes>
-                <ScrollToTop />
-            </div>
-        </Router>
-    );
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+        <ScrollToTop />
+      </div>
+    </Router>
+  );
 }
 
 export default App;
