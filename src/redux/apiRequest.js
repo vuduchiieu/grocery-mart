@@ -24,7 +24,7 @@ const loginUser = async (user, dispatch, navigate) => {
     navigate("/");
     dispatch(loginSuccess(decodedToken));
   } catch (error) {
-    alert(`Đăng nhập thất bại: ${error.response.data}`);
+    alert(`Đăng nhập thất bại: ${error?.response.data}`);
     dispatch(loginFailed());
   }
 };
@@ -37,7 +37,7 @@ const registerUser = async (user, dispatch, navigate) => {
     loginUser(user, dispatch, navigate);
     navigate("/");
   } catch (error) {
-    alert(`Đăng ký thất bại: ${error.response.data}`);
+    alert(`Đăng ký thất bại: ${error?.response.data}`);
     dispatch(registerFailed());
   }
 };

@@ -13,16 +13,12 @@ function FormSignUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const toggleShowPassword = () => {
     setShowPassword(!showPassword);
-  };
-  const toggleShowConfirmPassword = () => {
-    setShowConfirmPassword(!showConfirmPassword);
   };
 
   const [errEmail, setErrEmail] = useState("");
