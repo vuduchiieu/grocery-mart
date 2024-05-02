@@ -7,8 +7,7 @@ import { useAppContext } from "~/components/Context/AppContext";
 const cx = classNames.bind(styles);
 
 function ContentProfile({ personal, setPersonal, addresses, setAddresses }) {
-  const { user, detailed, town, state, dc, listHeart, updateCartItem } =
-    useAppContext();
+  const { user, listHeart, updateCartItem } = useAppContext();
   const handleInfo = () => {
     setPersonal(!personal);
   };
@@ -17,7 +16,6 @@ function ContentProfile({ personal, setPersonal, addresses, setAddresses }) {
   };
 
   console.log(user);
-
   return (
     <div className={cx("content")}>
       <div className={cx("wallet")}>
@@ -44,7 +42,7 @@ function ContentProfile({ personal, setPersonal, addresses, setAddresses }) {
             <img src={icon.calling} alt="" />
             <div>
               <h4>Phone number</h4>
-              <p>{user.phoneNumber}</p>
+              <p>{user.phone}</p>
             </div>
           </div>
 
@@ -53,9 +51,8 @@ function ContentProfile({ personal, setPersonal, addresses, setAddresses }) {
             <div>
               <h4>Add an address</h4>
               <p>
-                <span>{detailed || user.detailed}</span>,{" "}
-                <span>{town || user.town}</span>,{" "}
-                <span>{state || user.state}</span>, <span>{dc || user.dc}</span>
+                <span>{user.detailedAddress}</span>, <span>{user.town}</span>,{" "}
+                <span>{user.city}</span>, <span>{user.postcode}</span>
               </p>
             </div>
           </div>

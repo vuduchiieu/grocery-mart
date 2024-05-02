@@ -83,26 +83,6 @@ export const Contexts = ({ children }) => {
     }
   });
 
-  //set avatar
-  let [avatar, setAvatar] = useState();
-  useEffect(() => {
-    return () => {
-      avatar && URL.revokeObjectURL(avatar.review);
-    };
-  }, [avatar]);
-  const uploadAvatar = (e) => {
-    const processingImg = e.target.files[0];
-    if (e.target.files.length !== 0) {
-      processingImg.review = URL.createObjectURL(processingImg);
-    }
-    setAvatar(processingImg);
-  };
-
-  //adress
-  const [detailed, setDetailed] = useState();
-  const [town, setTown] = useState();
-  const [state, setState] = useState();
-  const [dc, setDC] = useState();
   //setPersonal
   const [personal, setPersonal] = useState(false);
   //setAddresses
@@ -121,22 +101,11 @@ export const Contexts = ({ children }) => {
         setListHeart,
         setLavAzzaItems,
         totalPrice,
-        avatar,
-        setAvatar,
-        uploadAvatar,
         setCartItem,
         removeCartItem,
         clearCartItem,
         uniqueProducts,
         productQuantities,
-        detailed,
-        setDetailed,
-        town,
-        setTown,
-        state,
-        setState,
-        dc,
-        setDC,
         personal,
         setPersonal,
         addresses,

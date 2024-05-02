@@ -38,6 +38,7 @@ const registerUser = async (user, dispatch, navigate) => {
     navigate("/");
   } catch (error) {
     alert(`Đăng ký thất bại: ${error?.response.data}`);
+
     dispatch(registerFailed());
   }
 };
@@ -52,14 +53,14 @@ const logoutUser = async (dispatch, navigate) => {
   }
 };
 
-const updateUser = async (newUser, user, dispatch) => {
+const updateUser = async (newUser, user, dispatch, handleBack) => {
   try {
     const res = await axios.put(
-      `${process.env.REACT_APP_API}/v1/user/${user?._id}`,
+      `${process.env.REACT_APP_API}/v1/user/${user._id || user.id}`,
       newUser
     );
-    const decodedToken = jwtDecode(res.data);
-    dispatch(updateUserSuccess(decodedToken));
+    dispatch(updateUserSuccess(res.data));
+    handleBack();
   } catch (error) {
     console.log(error);
   }

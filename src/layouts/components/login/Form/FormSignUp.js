@@ -85,6 +85,7 @@ function FormSignUp() {
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
+        <img className={cx("icon-username")} src={icon.username} alt="" />
         <div className={cx("error")}>
           <p>{errUsername}</p>
         </div>

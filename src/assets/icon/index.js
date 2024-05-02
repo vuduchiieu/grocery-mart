@@ -59,6 +59,7 @@ const icon = {
   check: require("./check.svg").default,
   noCheck: require("./noCheck.svg").default,
   emailIcon: require("./emailIcon.svg").default,
+  username: require("./username.svg").default,
   lock: require("./Lock.svg").default,
   unlock: require("./unlock.svg").default,
   smartphone: require("./smartphone.svg").default,
