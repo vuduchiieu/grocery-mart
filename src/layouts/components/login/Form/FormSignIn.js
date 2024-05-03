@@ -43,7 +43,7 @@ function FormSignIn() {
           <input
             required
             type="text"
-            placeholder="Email"
+            placeholder="Email or username"
             value={email}
             onChange={(e) => {
               if (!e.target.value.includes(" ")) {
