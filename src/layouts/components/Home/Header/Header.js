@@ -18,7 +18,7 @@ import { useState } from "react";
 const cx = classNames.bind(styles);
 
 function Header() {
-  const { listHeart, user, avatar, setLists } = useAppContext();
+  const { listHeart, user, setLists } = useAppContext();
   const [seach, setSeach] = useState(false);
   const navigate = useNavigate();
   const handleForward = () => {
@@ -70,11 +70,7 @@ function Header() {
               )}
             </div>
             <Link to={"/profile"} className={cx("avatar")}>
-              {avatar === undefined ? (
-                <img src={img.avatar} alt="" />
-              ) : (
-                <img src={avatar.review} alt="" />
-              )}
+              <img src={user.avatar?.url || img.avatar} alt="" />
             </Link>
           </div>
         ) : (

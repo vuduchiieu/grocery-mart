@@ -64,6 +64,9 @@ const icon = {
   unlock: require("./unlock.svg").default,
   smartphone: require("./smartphone.svg").default,
   fullName: require("./fullName.svg").default,
+  ok: require("./ok.svg").default,
+  camera: require("./camera.svg").default,
+  loading: require("./loading.svg").default,
 };
 
 export default icon;

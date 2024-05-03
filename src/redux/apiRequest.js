@@ -21,10 +21,10 @@ const loginUser = async (user, dispatch, navigate) => {
       user
     );
     const decodedToken = jwtDecode(res.data);
+    dispatch(loginSuccess(decodedToken.user));
     navigate("/");
-    dispatch(loginSuccess(decodedToken));
   } catch (error) {
-    alert(`Đăng nhập thất bại: ${error?.response.data}`);
+    alert(`Đăng nhập thất bại: ${error.response?.data}`);
     dispatch(loginFailed());
   }
 };
@@ -38,7 +38,6 @@ const registerUser = async (user, dispatch, navigate) => {
     navigate("/");
   } catch (error) {
     alert(`Đăng ký thất bại: ${error?.response.data}`);
-
     dispatch(registerFailed());
   }
 };
@@ -53,16 +52,26 @@ const logoutUser = async (dispatch, navigate) => {
   }
 };
 
-const updateUser = async (newUser, user, dispatch, handleBack) => {
+const updateUser = async (
+  newUser,
+  user,
+  dispatch,
+  handleBack,
+  setIsLoading
+) => {
+  setIsLoading(true);
   try {
     const res = await axios.put(
       `${process.env.REACT_APP_API}/v1/user/${user._id || user.id}`,
       newUser
     );
-    dispatch(updateUserSuccess(res.data));
+    const decodedToken = jwtDecode(res.data);
+    dispatch(updateUserSuccess(decodedToken.user));
+    setIsLoading(false);
     handleBack();
   } catch (error) {
     console.log(error);
+    setIsLoading(false);
   }
 };
 export { loginUser, registerUser, logoutUser, updateUser };

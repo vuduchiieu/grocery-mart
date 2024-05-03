@@ -1,45 +1,25 @@
 import classNames from "classnames/bind";
-import styles from "./paymentMethod.module.scss";
-import icon from "~/assets/icon";
-import { useEffect, useState } from "react";
-import { userData } from "~/components/userData/userData";
-import { products } from "~/components/productList/productList";
-import img from "~/assets/img";
 import { useAppContext } from "~/components/Context/AppContext";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import { useState } from "react";
+
+import styles from "./paymentMethod.module.scss";
+import icon from "~/assets/icon";
+import { products } from "~/components/productList/productList";
+import img from "~/assets/img";
+
 const cx = classNames.bind(styles);
 
 function PaymentMethod({ forward, handleForward, setForward }) {
-  const { totalPrice, setAddresses, idApi } = useAppContext();
-  const { detailed, town, state, dc } = useAppContext();
+  const { totalPrice, setAddresses, user } = useAppContext();
   const navigate = useNavigate();
 
   const [tick, setTick] = useState(true);
   const [tick2, setTick2] = useState(true);
   const [tick3, setTick3] = useState(false);
 
-  const detaileds = detailed || userData.detailed;
-  const towns = town || userData.town;
-  const states = state || userData.state;
-  const dcs = dc || userData.dc;
-
-  const [users, setUsers] = useState([]);
-  useEffect(() => {
-    if (idApi) {
-      axios
-        .get(`https://be-sieutaphoa.vercel.app/api/v1/user/${idApi}`)
-        .then((response) => {
-          setUsers(response.data.data);
-        })
-        .catch((error) =>
-          console.error("Lỗi khi lấy dữ liệu người dùng:", error)
-        );
-    }
-  }, [idApi]);
-
   const handlePay = () => {
-    if (detaileds !== "" && towns !== "" && states !== "" && dcs !== "") {
+    if (user.detailedAddress && user.town && user.city && user.postcode) {
       if (window.confirm("Payment confirmation")) {
         alert("Payment success");
         products.splice(0, products.length);
@@ -48,20 +28,20 @@ function PaymentMethod({ forward, handleForward, setForward }) {
       }
     } else {
       alert(
-        `you need to set up: ${detailed === "" ? "Detailed, " : ""}${
-          towns === "" ? "Town, " : ""
-        }${states === "" ? "State, " : ""}${dcs === "" ? "Dc" : ""}`
+        `you need to set up:  ${!user.detailedAddress ? "Detailed, " : ""}${
+          !user.town ? "Town, " : ""
+        }${!user.city ? "City, " : ""}${!user.postcode ? "Dc" : ""}`
       );
       navigate("/profile");
 
-      if (detaileds === "" || towns === "" || states === "" || dcs === "") {
+      if (!user.detailedAddress || !user.town || !user.city || !user.postcode) {
         setAddresses(true);
       }
     }
   };
 
   const handleEdit = () => {
-    if (detaileds === "" || towns === "" || states === "" || dcs === "") {
+    if (!user.detailedAddress || !user.town || !user.city || !user.postcode) {
       navigate("/profile");
       setAddresses(true);
     }
@@ -123,14 +103,11 @@ function PaymentMethod({ forward, handleForward, setForward }) {
               </div>
               <div className={cx("address")}>
                 <div>
-                  {users.map((item, i) => (
-                    <h3 key={i}>{item.fullName}</h3>
-                  ))}
+                  <h3>{user.fullname}</h3>
                   <p>
-                    <span>{detailed || userData.detailed}</span>,{" "}
-                    <span>{town || userData.town}</span>,{" "}
-                    <span>{state || userData.state}</span>,{" "}
-                    <span>{dc || userData.dc}</span>
+                    <span>{user.detailedAddress}</span>,{" "}
+                    <span>{user.town}</span>, <span>{user.city}</span>,{" "}
+                    <span>{user.postcode}</span>
                   </p>
                 </div>
                 <img

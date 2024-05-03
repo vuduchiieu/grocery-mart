@@ -15,7 +15,6 @@ function ContentProfile({ personal, setPersonal, addresses, setAddresses }) {
     setAddresses(!addresses);
   };
 
-  console.log(user);
   return (
     <div className={cx("content")}>
       <div className={cx("wallet")}>

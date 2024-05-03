@@ -9,14 +9,13 @@ import { useDispatch } from "react-redux";
 const cx = classNames.bind(styles);
 
 function PersonalInfo({ personal, setPersonal }) {
-  const { user } = useAppContext();
+  const { user, isLoading, setIsLoading } = useAppContext();
   const dispatch = useDispatch();
 
-  const [email, setEmail] = useState("");
-  const [fullname, setFullname] = useState("");
-  const [phone, setPhone] = useState("");
+  const [email, setEmail] = useState(user.email || "");
+  const [fullname, setFullname] = useState(user.fullname || "");
+  const [phone, setPhone] = useState(user.phone || "");
   const [password, setPassword] = useState("");
-
   const handleBack = () => {
     setPersonal(!personal);
   };
@@ -27,26 +26,29 @@ function PersonalInfo({ personal, setPersonal }) {
   const [showPassword, setShowPassword] = useState(false);
 
   const [errEmail, setErrEmail] = useState("");
-  const [errPassWord, setErrPassWord] = useState("");
+
+  const errPassWord = "";
+  // "Password must contain at least one number and one capital letter";
 
   const isValidEmail = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
   };
-  const isValidPassword = (password) => {
-    const passwordRegex = /^(?=.*[A-Z])(?=.*\d).{8,}$/;
-    return passwordRegex.test(password);
-  };
 
   const handleUpdateUser = (e) => {
     e.preventDefault();
+    if (!isValidEmail(email)) {
+      setErrEmail("Invalid email");
+      return;
+    }
+
     const newUser = {
       fullname,
       email,
       phone,
       password,
     };
-    updateUser(newUser, user, dispatch, handleBack);
+    updateUser(newUser, user, dispatch, handleBack, setIsLoading);
   };
 
   return (
@@ -116,7 +118,11 @@ function PersonalInfo({ personal, setPersonal }) {
             </label>
           </div>
           <button type="submit" className={cx("save")}>
-            Save edit
+            {isLoading ? (
+              <img className={cx("isLoading")} src={icon.loading} alt="" />
+            ) : (
+              <p>Save edit</p>
+            )}
           </button>
         </div>
       </form>

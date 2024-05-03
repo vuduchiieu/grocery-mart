@@ -3,12 +3,14 @@ import classNames from "classnames/bind";
 import styles from "./formLogin.module.scss";
 import { useState } from "react";
 import icon from "~/assets/icon";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { registerUser } from "~/redux/apiRequest";
 
 const cx = classNames.bind(styles);
 
 function FormSignUp() {
+  const isLoading = useSelector((state) => state.auth.register.isFetching);
+
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -112,7 +114,11 @@ function FormSignUp() {
         </div>
 
         <button className={cx("button")} type="submit">
-          <p>Sign Up</p>
+          {isLoading ? (
+            <img className={cx("isLoading")} src={icon.loading} alt="" />
+          ) : (
+            <p>Sign Up</p>
+          )}
         </button>
       </form>
 

@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useState } from "react";
 import { TotalLavAzza, products } from "~/components/productList/productList";
 import { useSelector } from "react-redux";
 
@@ -6,6 +6,7 @@ export const AppContext = createContext();
 
 export const Contexts = ({ children }) => {
   const user = useSelector((state) => state.auth.login.currentUser);
+
   //reaction
   const [lavAzzaItems, setLavAzzaItems] = useState([...TotalLavAzza]);
   // useEffect(() => {
@@ -90,6 +91,10 @@ export const Contexts = ({ children }) => {
   //setList
   const [lists, setLists] = useState(false);
 
+  //isloading
+
+  const [isLoading, setIsLoading] = useState(false);
+
   return (
     <AppContext.Provider
       value={{
@@ -112,6 +117,8 @@ export const Contexts = ({ children }) => {
         setAddresses,
         lists,
         setLists,
+        isLoading,
+        setIsLoading,
       }}
     >
       {children}

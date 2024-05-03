@@ -13,6 +13,10 @@ const authSlice = createSlice({
       error: false,
       success: false,
     },
+    updated: {
+      isFetching: false,
+      error: false,
+    },
   },
   reducers: {
     //login
@@ -56,6 +60,7 @@ const authSlice = createSlice({
       state.login.error = true;
     },
     //updateUser
+
     updateUserSuccess: (state, action) => {
       state.login.currentUser = action.payload;
     },

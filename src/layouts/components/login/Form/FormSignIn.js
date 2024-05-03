@@ -3,12 +3,14 @@ import { Link, useNavigate } from "react-router-dom";
 import icon from "~/assets/icon";
 import classNames from "classnames/bind";
 import styles from "./formLogin.module.scss";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "~/redux/apiRequest";
 
 const cx = classNames.bind(styles);
 
 function FormSignIn() {
+  const isLoading = useSelector((state) => state.auth.login.isFetching);
+
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -91,8 +93,13 @@ function FormSignIn() {
             </Link>
           </div>
         </div>
+
         <button type="submit" className={cx("button")}>
-          <p>Login</p>
+          {isLoading ? (
+            <img className={cx("isLoading")} src={icon.loading} alt="" />
+          ) : (
+            <p>Login</p>
+          )}
         </button>
       </form>
       <button className={cx("loginWithGG")}>

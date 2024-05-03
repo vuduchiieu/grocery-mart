@@ -1,99 +1,113 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 :root {
-    --primari-color: linear-gradient(
-            0deg,
-            rgba(255, 255, 255, 0.3) 0%,
-            rgba(255, 255, 255, 0.3) 100%
-        ),
-        #ffb700;
+  --primari-color: linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.3) 0%,
+      rgba(255, 255, 255, 0.3) 100%
+    ),
+    #ffb700;
 }
 
 @font-face {
-    font-family: "Gordita";
-    src: url("../../assets/fonts/Gordita-Bold.woff2") format("woff2"),
-        url("../../assets/fonts/Gordita-Bold.woff") format("woff");
-    font-weight: 700;
-    font-style: normal;
-    font-display: swap;
+  font-family: "Gordita";
+  src: url("../../assets/fonts/Gordita-Bold.woff2") format("woff2"),
+    url("../../assets/fonts/Gordita-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
-    font-family: "Gordita";
-    src: url("../../assets/fonts/Gordita-Medium.woff2") format("woff2"),
-        url("../../assets/fonts/Gordita-Medium.woff") format("woff");
-    font-weight: 500;
-    font-style: normal;
-    font-display: swap;
+  font-family: "Gordita";
+  src: url("../../assets/fonts/Gordita-Medium.woff2") format("woff2"),
+    url("../../assets/fonts/Gordita-Medium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
-    font-family: "Gordita";
-    src: url("../../assets/fonts/Gordita-Regular.woff2") format("woff2"),
-        url("../../assets/fonts/Gordita-Regular.woff") format("woff");
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
+  font-family: "Gordita";
+  src: url("../../assets/fonts/Gordita-Regular.woff2") format("woff2"),
+    url("../../assets/fonts/Gordita-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
-    font-family: "Gordita";
-    src: url("../../assets/fonts/Gordita-Light.woff2") format("woff2"),
-        url("../../assets/fonts/Gordita-Light.woff") format("woff");
-    font-weight: 300;
-    font-style: normal;
-    font-display: swap;
+  font-family: "Gordita";
+  src: url("../../assets/fonts/Gordita-Light.woff2") format("woff2"),
+    url("../../assets/fonts/Gordita-Light.woff") format("woff");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
 }
 
 body {
-    font-family: Gordita, sans-serif;
-    font-size: 16px;
-    line-height: 1.5;
-    text-rendering: optimizeLegibility;
-    overflow-y: overlay;
-    overflow-x: hidden;
+  font-family: Gordita, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  text-rendering: optimizeLegibility;
+  overflow-y: overlay;
+  overflow-x: hidden;
 }
 
 html *::-webkit-scrollbar {
-    border-radius: 0;
-    height: 8px;
-    width: 6px;
+  border-radius: 0;
+  height: 8px;
+  width: 6px;
 }
 html *::-webkit-scrollbar-thumb {
-    border-radius: 4px;
-    background-color: rgba(22, 24, 35, 0.06);
+  border-radius: 4px;
+  background-color: rgba(22, 24, 35, 0.06);
 }
 html *::-webkit-scrollbar-track {
-    border-radius: 0;
-    background-color: rgba(0, 0, 0, 0);
+  border-radius: 0;
+  background-color: rgba(0, 0, 0, 0);
 }
 
 button,
 input,
 select,
 [tabindex] {
-    border: none;
-    outline: none;
+  border: none;
+  outline: none;
 }
 
 a {
-    color: #000;
-    text-decoration: none;
+  color: #000;
+  text-decoration: none;
 }
 
 li {
-    list-style-type: none;
+  list-style-type: none;
 }
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 input[type="number"] {
-    -moz-appearance: textfield;
+  -moz-appearance: textfield;
+}
+
+.isLoading {
+  width: 50%;
+  height: 50%;
+  animation: spin 2s infinite;
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
 }

@@ -9,15 +9,17 @@ import { useState } from "react";
 const cx = classNames.bind(styles);
 
 function Addresses({ addresses, setAddresses }) {
-  const { user } = useAppContext();
+  const { user, isLoading, setIsLoading } = useAppContext();
   const dispatch = useDispatch();
   const handleBack = () => {
     setAddresses(!addresses);
   };
-  const [detailedAddress, setDetailedAddress] = useState("");
-  const [town, setTown] = useState("");
-  const [city, setCity] = useState("");
-  const [postcode, setPostcode] = useState("");
+  const [detailedAddress, setDetailedAddress] = useState(
+    user.detailedAddress || ""
+  );
+  const [town, setTown] = useState(user.town || "");
+  const [city, setCity] = useState(user.city || "");
+  const [postcode, setPostcode] = useState(user.postcode || "");
 
   const handleUpdateUser = (e) => {
     e.preventDefault();
@@ -27,7 +29,7 @@ function Addresses({ addresses, setAddresses }) {
       city,
       postcode,
     };
-    updateUser(newUser, user, dispatch, handleBack);
+    updateUser(newUser, user, dispatch, handleBack, setIsLoading);
   };
 
   return (
@@ -75,7 +77,11 @@ function Addresses({ addresses, setAddresses }) {
             />
           </div>
           <button type="submit" className={cx("save")}>
-            Save Edit
+            {isLoading ? (
+              <img className={cx("isLoading")} src={icon.loading} alt="" />
+            ) : (
+              <p>Save edit</p>
+            )}
           </button>
         </div>
       </form>

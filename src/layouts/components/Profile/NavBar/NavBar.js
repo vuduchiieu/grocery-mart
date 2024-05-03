@@ -1,16 +1,23 @@
 import classNames from "classnames/bind";
+import { useAppContext } from "~/components/Context/AppContext";
+import { useDispatch } from "react-redux";
+import { logoutUser, updateUser } from "~/redux/apiRequest";
+import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { enGB } from "date-fns/locale";
+import { format, parseISO } from "date-fns";
+
 import styles from "./navBar.module.scss";
 import img from "~/assets/img";
 import icon from "~/assets/icon";
-import { useAppContext } from "~/components/Context/AppContext";
-import { useDispatch } from "react-redux";
-import { logoutUser } from "~/redux/apiRequest";
-import { useNavigate } from "react-router-dom";
 
 const cx = classNames.bind(styles);
 
 function NavBar({ handleInfo, handleAddresses, handleLists }) {
-  const { user, avatar, uploadAvatar } = useAppContext();
+  const { user } = useAppContext();
+  const [avatar, setAvatar] = useState(null);
+  const [avatarPreview, setAvatarPreview] = useState("");
+  const [isForcus, setIsForcus] = useState(false);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -18,29 +25,74 @@ function NavBar({ handleInfo, handleAddresses, handleLists }) {
   const handleLogOut = () => {
     logoutUser(dispatch, navigate);
   };
+  useEffect(() => {
+    if (avatar) {
+      const imageURL = URL.createObjectURL(avatar);
+      setAvatarPreview(imageURL);
+    }
+  }, [avatar]);
+
+  const handleUpdateUser = (e) => {
+    e.preventDefault();
+    const newUser = new FormData();
+    if (avatar) {
+      newUser.append("avatar", avatar);
+    }
+    updateUser(newUser, user, dispatch);
+  };
+
+  const createdAt = format(
+    parseISO(user.createdAt || user.updatedAt),
+    "do MMM yyyy",
+    {
+      locale: enGB,
+    }
+  );
 
   return (
     <div className={cx("nav-bar")}>
       <div className={cx("profile")}>
         <img className={cx("background")} src={img.backGroundProfile} alt="" />
         <div className={cx("avatar")}>
-          <label htmlFor="imagine">
+          <img
+            onMouseEnter={() => setIsForcus(true)}
+            onMouseLeave={() => {
+              if (isForcus === true) {
+                setTimeout(() => {
+                  setIsForcus(false);
+                }, 5000);
+              }
+            }}
+            src={avatarPreview || user.avatar?.url || img.avatar}
+            alt="avatar"
+            className={cx("img", { hover: isForcus })}
+          />
+          <form onSubmit={handleUpdateUser}>
             <input
+              id="file-upload"
               type="file"
-              id="imagine"
-              style={{ display: "none" }}
-              onChange={(e) => uploadAvatar(e)}
-            />{" "}
-            {avatar === undefined ? (
-              <img src={img.avatar} alt="" />
-            ) : (
-              <img src={avatar.review} alt="" />
-            )}
-          </label>
-
+              onChange={(e) => {
+                setAvatar(e.target.files[0]);
+              }}
+            />
+            <button id="submit" type="submit">
+              <p>Lưu</p>
+            </button>
+          </form>
+          {isForcus && (
+            <div className={cx("action")}>
+              <label className={cx("select")} htmlFor="file-upload">
+                <img src={icon.camera} alt="camera" />
+              </label>
+              {avatarPreview && (
+                <label className={cx("select")} htmlFor="submit">
+                  <img src={icon.ok} alt="camera" />
+                </label>
+              )}
+            </div>
+          )}
           <p className={cx("name")}>{user.fullname || user.username}</p>
-
-          <p className={cx("registered")}>Registered: 10th Nov 2023</p>
+          <p className={cx("registered")}>Registered: {createdAt}</p>
         </div>
       </div>
       <div className={cx("account")}>
