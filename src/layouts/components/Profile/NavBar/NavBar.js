@@ -14,7 +14,7 @@ import icon from "~/assets/icon";
 const cx = classNames.bind(styles);
 
 function NavBar({ handleInfo, handleAddresses, handleLists }) {
-  const { user } = useAppContext();
+  const { user, isLoading, setIsLoading } = useAppContext();
   const [avatar, setAvatar] = useState(null);
   const [avatarPreview, setAvatarPreview] = useState("");
   const [isForcus, setIsForcus] = useState(false);
@@ -38,7 +38,7 @@ function NavBar({ handleInfo, handleAddresses, handleLists }) {
     if (avatar) {
       newUser.append("avatar", avatar);
     }
-    updateUser(newUser, user, dispatch);
+    updateUser(newUser, user, dispatch, null, setIsLoading);
   };
 
   const createdAt = format(
@@ -75,9 +75,7 @@ function NavBar({ handleInfo, handleAddresses, handleLists }) {
                 setAvatar(e.target.files[0]);
               }}
             />
-            <button id="submit" type="submit">
-              <p>Lưu</p>
-            </button>
+            <button id="submit" type="submit"></button>
           </form>
           {isForcus && (
             <div className={cx("action")}>
@@ -86,7 +84,15 @@ function NavBar({ handleInfo, handleAddresses, handleLists }) {
               </label>
               {avatarPreview && (
                 <label className={cx("select")} htmlFor="submit">
-                  <img src={icon.ok} alt="camera" />
+                  {isLoading ? (
+                    <img
+                      className={cx("isLoading")}
+                      src={icon.loading}
+                      alt=""
+                    />
+                  ) : (
+                    <img src={icon.ok} alt="camera" />
+                  )}
                 </label>
               )}
             </div>
